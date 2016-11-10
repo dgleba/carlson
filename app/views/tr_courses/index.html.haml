@@ -1,0 +1,45 @@
+.container-fluid
+
+.row
+  .col-sm-2.col-md-3.col-lg-3{:style => "background-color:white;"}
+    %ul.list-inline
+      %li
+        = link_to t('actions.create'), new_tr_course_path, class: 'btn btn-primary'
+      %li 
+        %h4{:class => "vcenter", :style => "color:black;margin-left:1px;"}= TrCourse.model_name.human
+  .col-sm-4.col-md-4.col-lg-4{:style => "background-color:white;"}
+    = search_form_for @q, class: 'search-form ' do |f|
+      .input-group
+        = f.search_field :name_cont, class: 'form-control'
+        %span.input-group-btn
+          %button.btn.btn-primary
+            %i.fa.fa-search    
+
+  .col-sm-2.col-md-2.col-lg-2{:style => "background-color:white;"}
+    %a{:href => "#"} Search-2(ComingSoon)
+
+  .col-sm-2.col-md-2.col-lg-2{:style => "background-color:white;"}
+    = page_entries_info @tr_courses, :entry_name => 'item'
+            
+= paginate @tr_courses
+    
+ 
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+      %th
+      %th= sort_link(@q, :name, TrCourse.human_attribute_name(:name))
+      %th= sort_link(@q, :category, TrCourse.human_attribute_name(:category))
+      %th= sort_link(@q, :description, TrCourse.human_attribute_name(:description))
+
+  %tbody
+    - @tr_courses.each do |tr_course|
+      %tr
+        %td= link_to t('actions.show'), tr_course, class: 'btn btn-primary'
+        %td= link_to t('actions.edit'), edit_tr_course_path(tr_course)
+        %td= tr_course.name
+        %td= tr_course.category
+        %td= tr_course.description
+
+= paginate @tr_courses

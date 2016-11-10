@@ -1,0 +1,16 @@
+%h1= StfAsset.model_name.human.singularize
+
+%dl.dl-horizontal
+  %dt= StfAsset.human_attribute_name :assetnum
+  %dd= @stf_asset.assetnum
+  %dt= StfAsset.human_attribute_name :description
+  %dd= @stf_asset.description
+  %dt= StfAsset.human_attribute_name :active_status
+  %dd= @stf_asset.active_status
+  %dt= StfAsset.human_attribute_name :sort
+  %dd= @stf_asset.sort
+
+= link_to t('actions.edit'), edit_stf_asset_path(@stf_asset), class: 'btn btn-primary'
+&nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp
+= link_to t('actions.back'), stf_assets_path
+%hr

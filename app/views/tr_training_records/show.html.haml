@@ -1,0 +1,36 @@
+%h1= TrTrainingRecord.model_name.human.singularize
+
+%dl.dl-horizontal
+  %dt= TrTrainingRecord.human_attribute_name :tr_course
+  %dd= @tr_training_record.tr_course
+  %dt= TrTrainingRecord.human_attribute_name :training_date
+  %dd= @tr_training_record.training_date
+  %dt= TrTrainingRecord.human_attribute_name :details_of_training
+  %dd= @tr_training_record.details_of_training
+  %dt= TrTrainingRecord.human_attribute_name :hours_trained
+  %dd= @tr_training_record.hours_trained
+  %dt= TrTrainingRecord.human_attribute_name :location
+  %dd= @tr_training_record.location
+  %dt= TrTrainingRecord.human_attribute_name :swi
+  %dd= @tr_training_record.swi
+  %dt= TrTrainingRecord.human_attribute_name :path_to_training_material
+  %dd= @tr_training_record.path_to_training_material
+  %dt= TrTrainingRecord.human_attribute_name :tr_type
+  %dd= @tr_training_record.tr_type
+  %dt= TrTrainingRecord.human_attribute_name :tr_customer
+  %dd= @tr_training_record.tr_customer
+  %dt= TrTrainingRecord.human_attribute_name :tr_program
+  %dd= @tr_training_record.tr_program
+  %dt= TrTrainingRecord.human_attribute_name :tr_part
+  %dd= @tr_training_record.tr_part
+  %dt= TrTrainingRecord.human_attribute_name :tr_cell
+  %dd= @tr_training_record.tr_cell
+  %dt= TrTrainingRecord.human_attribute_name :stf_asset
+  %dd= @tr_training_record.stf_asset
+  %dt= TrTrainingRecord.human_attribute_name :user
+  %dd= @tr_training_record.user
+
+= link_to t('actions.edit'), edit_tr_training_record_path(@tr_training_record), class: 'btn btn-primary'
+&nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp
+= link_to t('actions.back'), tr_training_records_path
+%hr

@@ -1,0 +1,67 @@
+.container-fluid
+
+.row
+  .col-sm-2.col-md-3.col-lg-3{:style => "background-color:white;"}
+    %ul.list-inline
+      %li
+        = link_to t('actions.create'), new_tr_training_record_path, class: 'btn btn-primary'
+      %li 
+        %h4{:class => "vcenter", :style => "color:black;margin-left:1px;"}= TrTrainingRecord.model_name.human
+  .col-sm-4.col-md-4.col-lg-4{:style => "background-color:white;"}
+    = search_form_for @q, class: 'search-form ' do |f|
+      .input-group
+        = f.search_field :tr_course_cont, class: 'form-control'
+        %span.input-group-btn
+          %button.btn.btn-primary
+            %i.fa.fa-search    
+
+  .col-sm-2.col-md-2.col-lg-2{:style => "background-color:white;"}
+    %a{:href => "#"} Search-2(ComingSoon)
+
+  .col-sm-2.col-md-2.col-lg-2{:style => "background-color:white;"}
+    = page_entries_info @tr_training_records, :entry_name => 'item'
+            
+= paginate @tr_training_records
+    
+ 
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+      %th
+      %th= sort_link(@q, :tr_course, TrTrainingRecord.human_attribute_name(:tr_course))
+      %th= sort_link(@q, :training_date, TrTrainingRecord.human_attribute_name(:training_date))
+      %th= sort_link(@q, :details_of_training, TrTrainingRecord.human_attribute_name(:details_of_training))
+      %th= sort_link(@q, :hours_trained, TrTrainingRecord.human_attribute_name(:hours_trained))
+      %th= sort_link(@q, :location, TrTrainingRecord.human_attribute_name(:location))
+      %th= sort_link(@q, :swi, TrTrainingRecord.human_attribute_name(:swi))
+      %th= sort_link(@q, :path_to_training_material, TrTrainingRecord.human_attribute_name(:path_to_training_material))
+      %th= sort_link(@q, :tr_type, TrTrainingRecord.human_attribute_name(:tr_type))
+      %th= sort_link(@q, :tr_customer, TrTrainingRecord.human_attribute_name(:tr_customer))
+      %th= sort_link(@q, :tr_program, TrTrainingRecord.human_attribute_name(:tr_program))
+      %th= sort_link(@q, :tr_part, TrTrainingRecord.human_attribute_name(:tr_part))
+      %th= sort_link(@q, :tr_cell, TrTrainingRecord.human_attribute_name(:tr_cell))
+      %th= sort_link(@q, :stf_asset, TrTrainingRecord.human_attribute_name(:stf_asset))
+      %th= sort_link(@q, :user, TrTrainingRecord.human_attribute_name(:user))
+
+  %tbody
+    - @tr_training_records.each do |tr_training_record|
+      %tr
+        %td= link_to t('actions.show'), tr_training_record, class: 'btn btn-primary'
+        %td= link_to t('actions.edit'), edit_tr_training_record_path(tr_training_record)
+        %td= tr_training_record.tr_course
+        %td= tr_training_record.training_date
+        %td= tr_training_record.details_of_training
+        %td= tr_training_record.hours_trained
+        %td= tr_training_record.location
+        %td= tr_training_record.swi
+        %td= tr_training_record.path_to_training_material
+        %td= tr_training_record.tr_type
+        %td= tr_training_record.tr_customer
+        %td= tr_training_record.tr_program
+        %td= tr_training_record.tr_part
+        %td= tr_training_record.tr_cell
+        %td= tr_training_record.stf_asset
+        %td= tr_training_record.user
+
+= paginate @tr_training_records

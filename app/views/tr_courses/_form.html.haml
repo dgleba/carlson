@@ -1,0 +1,13 @@
+= simple_form_for(@tr_course) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :category
+    = f.input :description
+
+  .form-actions
+    = f.button :submit
+    &nbsp &nbsp | &nbsp &nbsp
+    = link_to t('actions.back'), tr_courses_path
+  %hr

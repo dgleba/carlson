@@ -1,29 +1,40 @@
 Rails.application.routes.draw do
 
+  resources :tr_training_records
+  resources :tr_courses
+  resources :tr_training_employees
+  resources :stf_employees
+  resources :stf_assets
+  resources :tr_cells
+  resources :tr_types
+  resources :tr_parts
+  resources :tr_programs
+  resources :tr_customers
+  resources :trs
   devise_for :users
 
   scope "/admin" do
     resources :users
   end
 
-  #get 'customers/print1'
-  resources :customers do
-    member do
-      get 'print1'
-      get 'print2'
-    end
-  end
+  # get 'customers/print1'
+  # resources :customers do
+    # member do
+      # get 'print1'
+      # get 'print2'
+    # end
+  # end
 
-  # send email by button click on show users form...
-  get :send_user1_email, to: 'users#send_user1_email', as: :send_user1_email
+   # send email by button click on show users form...
+  # get :send_user1_email, to: 'users#send_user1_email', as: :send_user1_email
 
-  resources :pasenger_lists
-  resources :passengers
-  resources :jobs
-  resources :projects
-  #resources :customers
-  resources :rental_records
-  resources :vehicles
+  # resources :pasenger_lists
+  # resources :passengers
+  # resources :jobs
+  # resources :projects
+  # resources :customers
+  # resources :rental_records
+  # resources :vehicles
 
   #administrate gem... 2016-06-08 David Gleba
   namespace :admin do

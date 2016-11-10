@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029192623) do
+ActiveRecord::Schema.define(version: 20161110190232) do
 
   create_table "audits", force: :cascade do |t|
     t.integer  "auditable_id"
@@ -36,57 +36,118 @@ ActiveRecord::Schema.define(version: 20161029192623) do
   add_index "audits", ["request_uuid"], name: "index_audits_on_request_uuid"
   add_index "audits", ["user_id", "user_type"], name: "user_index"
 
-  create_table "customers", force: :cascade do |t|
-    t.string   "name"
-    t.string   "address"
-    t.string   "phone"
-    t.float    "discount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-  end
-
-  add_index "customers", ["user_id"], name: "index_customers_on_user_id"
-
-  create_table "pasenger_lists", force: :cascade do |t|
-    t.string   "clocknum"
-    t.string   "name"
-    t.boolean  "active"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "passengers", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
-    t.text     "output"
-    t.integer  "rental_record_id"
-    t.integer  "pasenger_list_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
-  add_index "passengers", ["pasenger_list_id"], name: "index_passengers_on_pasenger_list_id"
-  add_index "passengers", ["rental_record_id"], name: "index_passengers_on_rental_record_id"
-
-  create_table "rental_records", force: :cascade do |t|
-    t.integer  "customer_id"
-    t.integer  "vehicle_id"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.datetime "lastUpdated"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "rental_records", ["customer_id"], name: "index_rental_records_on_customer_id"
-  add_index "rental_records", ["vehicle_id"], name: "index_rental_records_on_vehicle_id"
-
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "stf_assets", force: :cascade do |t|
+    t.string   "assetnum"
+    t.string   "description"
+    t.integer  "active_status"
+    t.integer  "sort"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "stf_employees", force: :cascade do |t|
+    t.string   "clocknum"
+    t.string   "name"
+    t.integer  "active_status"
+    t.integer  "sort"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "tr_cells", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "active_status"
+    t.integer  "sort"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "tr_courses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "category"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "tr_customers", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "active_status"
+    t.integer  "sort"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "tr_parts", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "active_status"
+    t.integer  "sort"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "tr_programs", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "active_status"
+    t.integer  "sort"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "tr_training_employees", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.text     "output"
+    t.integer  "tr_training_record_id"
+    t.integer  "stf_employee_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "tr_training_employees", ["stf_employee_id"], name: "index_tr_training_employees_on_stf_employee_id"
+  add_index "tr_training_employees", ["tr_training_record_id"], name: "index_tr_training_employees_on_tr_training_record_id"
+
+  create_table "tr_training_records", force: :cascade do |t|
+    t.integer  "tr_course_id"
+    t.date     "training_date"
+    t.text     "details_of_training"
+    t.float    "hours_trained"
+    t.string   "location"
+    t.string   "swi"
+    t.string   "path_to_training_material"
+    t.integer  "tr_type_id"
+    t.integer  "tr_customer_id"
+    t.integer  "tr_program_id"
+    t.integer  "tr_part_id"
+    t.integer  "tr_cell_id"
+    t.integer  "stf_asset_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "tr_training_records", ["stf_asset_id"], name: "index_tr_training_records_on_stf_asset_id"
+  add_index "tr_training_records", ["tr_cell_id"], name: "index_tr_training_records_on_tr_cell_id"
+  add_index "tr_training_records", ["tr_course_id"], name: "index_tr_training_records_on_tr_course_id"
+  add_index "tr_training_records", ["tr_customer_id"], name: "index_tr_training_records_on_tr_customer_id"
+  add_index "tr_training_records", ["tr_part_id"], name: "index_tr_training_records_on_tr_part_id"
+  add_index "tr_training_records", ["tr_program_id"], name: "index_tr_training_records_on_tr_program_id"
+  add_index "tr_training_records", ["tr_type_id"], name: "index_tr_training_records_on_tr_type_id"
+  add_index "tr_training_records", ["user_id"], name: "index_tr_training_records_on_user_id"
+
+  create_table "tr_types", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "active_status"
+    t.integer  "sort"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -111,19 +172,6 @@ ActiveRecord::Schema.define(version: 20161029192623) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["role_id"], name: "index_users_on_role_id"
-
-  create_table "vehicles", force: :cascade do |t|
-    t.string   "veh_reg_no"
-    t.string   "category"
-    t.string   "name"
-    t.string   "desc"
-    t.binary   "photo"
-    t.decimal  "daily_rate"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "features"
-    t.string   "color"
-  end
 
   create_table "version_associations", force: :cascade do |t|
     t.integer "version_id"

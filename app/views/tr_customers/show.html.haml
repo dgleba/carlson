@@ -1,0 +1,14 @@
+%h1= TrCustomer.model_name.human.singularize
+
+%dl.dl-horizontal
+  %dt= TrCustomer.human_attribute_name :name
+  %dd= @tr_customer.name
+  %dt= TrCustomer.human_attribute_name :active_status
+  %dd= @tr_customer.active_status
+  %dt= TrCustomer.human_attribute_name :sort
+  %dd= @tr_customer.sort
+
+= link_to t('actions.edit'), edit_tr_customer_path(@tr_customer), class: 'btn btn-primary'
+&nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp
+= link_to t('actions.back'), tr_customers_path
+%hr

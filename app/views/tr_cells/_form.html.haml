@@ -1,0 +1,13 @@
+= simple_form_for(@tr_cell) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :active_status
+    = f.input :sort
+
+  .form-actions
+    = f.button :submit
+    &nbsp &nbsp | &nbsp &nbsp
+    = link_to t('actions.back'), tr_cells_path
+  %hr

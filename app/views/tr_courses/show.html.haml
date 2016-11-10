@@ -1,0 +1,14 @@
+%h1= TrCourse.model_name.human.singularize
+
+%dl.dl-horizontal
+  %dt= TrCourse.human_attribute_name :name
+  %dd= @tr_course.name
+  %dt= TrCourse.human_attribute_name :category
+  %dd= @tr_course.category
+  %dt= TrCourse.human_attribute_name :description
+  %dd= @tr_course.description
+
+= link_to t('actions.edit'), edit_tr_course_path(@tr_course), class: 'btn btn-primary'
+&nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp
+= link_to t('actions.back'), tr_courses_path
+%hr

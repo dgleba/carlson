@@ -1,0 +1,14 @@
+= simple_form_for(@stf_asset) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :assetnum
+    = f.input :description
+    = f.input :active_status
+    = f.input :sort
+
+  .form-actions
+    = f.button :submit
+    &nbsp &nbsp | &nbsp &nbsp
+    = link_to t('actions.back'), stf_assets_path
+  %hr

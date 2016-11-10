@@ -1,0 +1,14 @@
+%h1= TrType.model_name.human.singularize
+
+%dl.dl-horizontal
+  %dt= TrType.human_attribute_name :name
+  %dd= @tr_type.name
+  %dt= TrType.human_attribute_name :active_status
+  %dd= @tr_type.active_status
+  %dt= TrType.human_attribute_name :sort
+  %dd= @tr_type.sort
+
+= link_to t('actions.edit'), edit_tr_type_path(@tr_type), class: 'btn btn-primary'
+&nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp
+= link_to t('actions.back'), tr_types_path
+%hr
