@@ -1,0 +1,60 @@
+.nested-fields.well.well-compact
+  / use assocation below... = f.input :name
+
+  / http://stackoverflow.com/questions/8766624/if-database-entry-is-empty-show-this-message-in-view
+  / debugging with mark campbell.. tr_training_employee.output.present?
+  
+  - if f.object.output.present?
+    = f.association :stf_employee
+    %p Signature Previously Requested
+  - else
+    = f.association :stf_employee, :as => :collection_select, collection: StfEmployee.order(:name, :clocknum).where(active_status: true), :label_method => lambda { |stf_employee| "#{stf_employee.name} , #{stf_employee.clocknum}" }
+    .sigPad
+      %p.drawItDesc Draw your signature
+      %ul.sigNav
+        %li.clearButton
+          %a{:href => "#clear"} Clear
+      .sig.sigWrapper
+        .typed
+        %canvas.pad{:height => "105", :width => "300"}
+        = f.input :output , as: :hidden , input_html: { class: 'output' }
+      
+  %div
+  %br    
+
+
+
+  
+ 
+  :javascript
+    $(function() {
+      var dgoptions = {
+          bgColour : '#F0FEEF'
+           , drawOnly : true
+        };
+      
+      // if sigpad is not in a cocoon nested form.. 
+      // also, without this, it won't show sigpad when edit is pressed. 2016-06-24.  
+      $('.sigPad').signaturePad(dgoptions);
+
+
+      // if sigpad IS in a cocoon nested form..
+      // show sigpad using cocoon:after-insert --  using callback..
+      $('#tr_training_employees')
+        .on('cocoon:after-insert', function() {
+          $('.sigPad').signaturePad(dgoptions);
+          //$('.sigPad').signaturePad({displayOnly:true}).regenerate(sig);
+      })
+
+
+      // if this IS in a cocoon nested form..  
+      // show it using cocoon:after-insert --  using callback..
+      $('#tr_training_employees')
+        .on('cocoon:after-insert', function() {
+          $(".dgselect2").select2({
+        });
+        })
+    }); 
+    
+  = link_to_remove_association "remove tr_training_employee", f    
+    

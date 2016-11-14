@@ -30,6 +30,15 @@
         %li
           = f.association :stf_asset, :as => :collection_select, collection:StfAsset.order(:description), :label_method => lambda { |stf_asset| "#{stf_asset.description}" }, label:'Asset' 
     /= f.association :user
+    
+    %h3 Training employee
+    #tr_training_employees
+      = f.simple_fields_for :tr_training_employees do |tr_training_employee|
+        = render 'tr_training_employee_fields', f: tr_training_employee, tr_training_employee: f.object
+      
+      .links
+        = link_to_add_association 'add tr_training_employee', f, :tr_training_employees
+        
 
   .form-actions
     = f.button :submit

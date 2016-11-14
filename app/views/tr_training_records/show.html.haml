@@ -30,7 +30,22 @@
   %dt= TrTrainingRecord.human_attribute_name :user
   %dd= @tr_training_record.user
 
+
 = link_to t('actions.edit'), edit_tr_training_record_path(@tr_training_record), class: 'btn btn-primary'
 &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp
 = link_to t('actions.back'), tr_training_records_path
 %hr
+
+  
+%dl.dl-horizontal
+  - @tr_training_record.tr_training_employees.each do |p|
+    %dt
+      Name
+    %dd
+      = p.try(:stf_employee)
+    
+    :javascript
+      $(document).ready(function() {
+        var sig = #{p.try(:output)};
+        $('.sigPad').signaturePad({displayOnly : true}).regenerate(sig);
+        });
