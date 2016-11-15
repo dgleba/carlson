@@ -1,6 +1,20 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  # ==> LDAP Configuration 
+  #
+  # David Gleba 2016-07-27_Wed_12.07-PM works..
+  # config.ldap_logger = true
+  config.ldap_create_user = true
+  config.ldap_auth_username_builder = Proc.new() {|attribute, login, ldap| "#{login}@stackpole.ca"}
+  # config.ldap_update_password = true
+  # config.ldap_config = "#{Rails.root}/config/ldap.yml"
+  # config.ldap_check_group_membership = false
+  # config.ldap_check_group_membership_without_admin = false
+  # config.ldap_check_attributes = true
+  # config.ldap_use_admin_to_bind = true
+  # config.ldap_ad_group_check = false
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -12,7 +26,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'dgleba@gmail.com'
+  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -108,7 +122,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '2f059057c6292e607df1e40baa1fcb9ce254044eaed3e41ae43862568f8fdd8e887a6cb50c3efc1072d3906a959ad2f62051158edbe72329cc12fb812203aa54'
+  # config.pepper = 'ba62566e7524e6388b307c72f89bd8af37cc8e72685b447432b4b59dbd529d9bf6570a3f0aaca66f158168358f931cbf8921b2b8a7509eba00a2115e2c251a5b'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
@@ -133,9 +147,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-
-  #David Gleba
-  # config.reconfirmable = true 
+  config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
@@ -145,8 +157,7 @@ Devise.setup do |config|
   # config.remember_for = 2.weeks
 
   # Invalidates all the remember me tokens when the user signs out.
-  #David Gleba
-  # config.expire_all_remember_me_on_sign_out = true
+  config.expire_all_remember_me_on_sign_out = true
 
   # If true, extends the user's remember period when remembered via cookie.
   # config.extend_remember_period = false
@@ -157,13 +168,11 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  # David Gleba
-  config.password_length = 1..128
+  config.password_length = 4..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  
   #config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
   config.email_regexp = /./
 
@@ -220,7 +229,7 @@ Devise.setup do |config|
   # stretches to 10, and copy REST_AUTH_SITE_KEY to pepper).
   #
   # Require the `devise-encryptable` gem when using anything other than bcrypt
-  #config.encryptor = :sha512
+  # config.encryptor = :sha512
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for

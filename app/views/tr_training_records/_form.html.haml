@@ -12,7 +12,7 @@
           = f.input :hours_trained
     = f.input :location
     = f.input :swi, label:'SWI number'
-    = f.input :path_to_training_material
+    = f.input :path_to_training_material, label:raw('<strong>Path to training material &nbsp;&nbsp;&nbsp;&nbsp;</strong><span style="font-weight:normal;color:grey"><small>Where are the training materials located?  Eg: S:\HR\Info\Safety Talks\Safety Talks 2016\Hazard Reporting - Janaury.pptx, or Windchill, or etc. If other, please expand.</small></span>')
     .well.well-compact{:style => "background-color:#ffddcc;"}  
       %table
         %tbody

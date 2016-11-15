@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/cschiewek/devise_ldap_authenticatable.git
+  revision: 69ba4bb48865a6da6d30f707e287565e3bc60a00
+  specs:
+    devise_ldap_authenticatable (0.8.6)
+      devise (>= 3.4.1)
+      net-ldap (>= 0.6, != 0.12)
+
+GIT
   remote: git://github.com/dgleba/yaml_db.git
   revision: 8135ee098b678d1cdd0a05649593dfa1d289405e
   specs:
@@ -217,6 +225,7 @@ GEM
       bourbon (>= 4.0)
       sass (>= 3.3)
     nested_form (0.3.2)
+    net-ldap (0.15.0)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     nokogiri (1.6.8.1-x86-mingw32)
@@ -420,6 +429,7 @@ DEPENDENCIES
   database_cleaner
   defer_draper
   devise
+  devise_ldap_authenticatable!
   dotenv-rails (>= 2.0.0)
   draper
   email_validator
