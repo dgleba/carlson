@@ -1,24 +1,3 @@
-:css
-  hr {height:1px;}
-  a {display:block;line-height:1em;}
-  #resize01 {height:40px;overflow:hidden;background:#eee;}
-  #viewmore, #viewless {
-      margin:0px 0 0 0;
-      padding:8px 5px;
-      background:#e9dbaf;
-      color:#fff;
-      display:inline-block;
-      text-decoration:none;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  }
-
-/ background:#c2d6c2; pale green
-/ background:#e9dbaf; tan
-/ #f5e2bc pale orange
-/ #ffe6cc pale orange
-
 .container-fluid
 
 .row
@@ -29,27 +8,13 @@
       %li
         %h4{:class => "vcenter", :style => "color:black;margin-left:1px;"}= TrTrainingEmployee.model_name.human
 
-  .col-sm-4.col-md-4.col-lg-4{:style => "background-color:white;"}
-    %div#resize01
-      = search_form_for @q, {:class => "search-form"} do |f|
-        .input-group
-          / http://stackoverflow.com/questions/27451693/display-two-fields-side-by-side-in-a-bootstrap-form
-          = f.search_field most_tr_training_employees_cont, class: 'form-control' , :placeholder => "Most fields..(enter one word)"
-          = f.search_field most2_tr_training_employees_cont, class: 'form-control' , :placeholder => "Most fields.."
-          %span.input-group-addon{:class => "seperator1", :style => "max-width:1px;"} &nbsp
-          = f.search_field :stf_employee_name_or_stf_employee_clocknum_cont_any, class: 'form-control', :placeholder => "Name or Clock"
-          = f.search_field :tr_training_record_id_eq, class: 'form-control', :placeholder => "Tr Training Record ID"
-          %span.input-group-btn{:style => "vertical-align:top;"}
-            %button.btn.btn-primary
-              %i.fa.fa-search
-
-  .col-sm-2.col-md-2.col-lg-2{:style => "background-color:white;text-align: center;"}
-    <a href="#" id="viewmore">+ More (Search)</a>
-    <a href="#" id="viewless">- Less (Search)</a>
-
-  .col-sm-2.col-md-2.col-lg-2{:style => "background-color:white;"}
-    = page_entries_info @tr_training_employees, :entry_name => 'item'
-    / this works..   &nbsp  ---- use &#032; instead of &nbsp; for just a plain whitespace.    
+  .col-sm-6.col-md-5.col-lg-4{:style => "background-color:white;"}
+    = search_form_for @q, class: 'search-form ' do |f|
+      .input-group
+        = f.search_field :name_cont, class: 'form-control'
+        %span.input-group-btn
+          %button.btn.btn-primary
+            %i.fa.fa-search    
 = paginate @tr_training_employees
     
  

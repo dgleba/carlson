@@ -9,26 +9,27 @@
         %li
           = f.input :training_date
         %li
-          = f.input :hours_trained, label: 'Time required (in hours)'
-    = f.input :details_of_training
+          = f.input :hours_trained
     = f.input :location
-    = f.input :swi
+    = f.input :swi, label:'SWI number'
     = f.input :path_to_training_material
     .well.well-compact{:style => "background-color:#ffddcc;"}  
-      %ul.list-inline
-        %li
-          = f.association :tr_type, :as => :collection_select, collection:TrType.order(:name), :label_method => lambda { |tr_type| "#{tr_type.name} " }, label:'Type'
-        %li
-          = f.association :tr_customer, :as => :collection_select, collection:TrCustomer.order(:name), :label_method => lambda { |tr_customer| "#{tr_customer.name} " }, label:'Customer'
-        %li
-          = f.association :tr_program, :as => :collection_select, collection:TrProgram.order(:name), :label_method => lambda { |tr_program| "#{tr_program.name} " }, label:'Program'
-      %ul.list-inline
-        %li
-          = f.association :tr_part, :as => :collection_select, collection:TrPart.order(:name), :label_method => lambda { |tr_part| "#{tr_part.name} " }, label:'Part'
-        %li
-          = f.association :tr_cell, :as => :collection_select, collection:TrCell.order(:name), :label_method => lambda { |tr_cell| "#{tr_cell.name} " }, label:'Cell'
-        %li
-          = f.association :stf_asset, :as => :collection_select, collection:StfAsset.order(:description), :label_method => lambda { |stf_asset| "#{stf_asset.description}" }, label:'Asset' 
+      %table
+        %tbody
+          %tr
+            %td
+              = f.association :tr_type, :as => :collection_select, collection:TrType.order(:name), :label_method => lambda { |tr_type| "#{tr_type.name} " }, label:'Type'
+            %td
+              = f.association :tr_customer, :as => :collection_select, collection:TrCustomer.order(:name), :label_method => lambda { |tr_customer| "#{tr_customer.name} " }, label:raw('&nbsp &nbsp Customer')
+            %td
+              = f.association :tr_program, :as => :collection_select, collection:TrProgram.order(:name), :label_method => lambda { |tr_program| "#{tr_program.name} " }, label:raw('&nbsp &nbsp Program')
+          %tr
+            %td
+              = f.association :tr_part, :as => :collection_select, collection:TrPart.order(:name), :label_method => lambda { |tr_part| "#{tr_part.name} " }, label:'Part'
+            %td
+              = f.association :tr_cell, :as => :collection_select, collection:TrCell.order(:name), :label_method => lambda { |tr_cell| "#{tr_cell.name} " }, label:raw('&nbsp &nbsp Cell')
+            %td
+              = f.association :stf_asset, :as => :collection_select, collection:StfAsset.order(:description), :label_method => lambda { |stf_asset| "#{stf_asset.description}" }, label:raw('&nbsp &nbsp Asset') 
     /= f.association :user
     
     %h3 Training employee

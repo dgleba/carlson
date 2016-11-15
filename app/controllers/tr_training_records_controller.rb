@@ -18,6 +18,7 @@ class TrTrainingRecordsController < ApplicationController
 
   # GET /tr_training_records/new
   def new
+    @signed = false
   end
 
   # GET /tr_training_records/1/edit
@@ -63,6 +64,6 @@ class TrTrainingRecordsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def tr_training_record_params
-    params.require(:tr_training_record).permit(:tr_course_id, :training_date, :details_of_training, :hours_trained, :location, :swi, :path_to_training_material, :tr_type_id, :tr_customer_id, :tr_program_id, :tr_part_id, :tr_cell_id, :stf_asset_id, :user_id,tr_training_employees_attributes: [:id, :description, :name, :output, :stf_employee_id, :_destroy , stf_employees_attributes: [:id, :clocknum, :name, :active, :_destroy]])
+    params.require(:tr_training_record).permit(:tr_course_id, :training_date, :details_of_training, :hours_trained, :location, :swi, :path_to_training_material, :tr_type_id, :tr_customer_id, :tr_program_id, :tr_part_id, :tr_cell_id, :stf_asset_id, :user_id, tr_training_employees_attributes: [:id, :description, :name, :output, :stf_employee_id, :_destroy , stf_employees_attributes: [:id, :clocknum, :name, :active_status, :_destroy]])
   end
 end

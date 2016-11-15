@@ -11,7 +11,7 @@
   %dd= @tr_training_record.hours_trained
   %dt= TrTrainingRecord.human_attribute_name :location
   %dd= @tr_training_record.location
-  %dt= TrTrainingRecord.human_attribute_name :swi
+  %dt= "SWI number"
   %dd= @tr_training_record.swi
   %dt= TrTrainingRecord.human_attribute_name :path_to_training_material
   %dd= @tr_training_record.path_to_training_material
@@ -36,16 +36,4 @@
 = link_to t('actions.back'), tr_training_records_path
 %hr
 
-  
-%dl.dl-horizontal
-  - @tr_training_record.tr_training_employees.each do |p|
-    %dt
-      Name
-    %dd
-      = p.try(:stf_employee)
-    
-    :javascript
-      $(document).ready(function() {
-        var sig = #{p.try(:output)};
-        $('.sigPad').signaturePad({displayOnly : true}).regenerate(sig);
-        });
+

@@ -8,7 +8,8 @@ class TrTrainingEmployeesController < ApplicationController
 
   # GET /tr_training_employees
   def index
-    @q = @tr_training_employees.search params[:q]
+    @q = @tr_training_employees.ransack params[:q]
+    # ransack: include associated tables in the search..
     @tr_training_employees = @q.result.page(params[:page]).includes(:stf_employee, :tr_training_record)
   end
 
@@ -63,6 +64,6 @@ class TrTrainingEmployeesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def tr_training_employee_params
-    params.require(:tr_training_employee).permit(:name, :description, :output, :tr_training_record_id, :stf_employee_id, stf_employees_attributes: [:id, :clocknum, :name])
+    params.require(:tr_training_employee).permit(:name, :description, :output, :tr_training_record_id, :stf_employee_id, :searchm_cont, stf_employees_attributes: [:id, :clocknum, :name])
   end
 end

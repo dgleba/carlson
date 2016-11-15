@@ -63,6 +63,6 @@ class StfEmployeesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def stf_employee_params
-    params.require(:stf_employee).permit(:clocknum, :name, :active_status, :sort)
+    params.require(:stf_employee).permit(:id, :clocknum, :name, :active_status, :sort)
   end
 end

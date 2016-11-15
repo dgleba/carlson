@@ -15,11 +15,6 @@
           %button.btn.btn-primary
             %i.fa.fa-search    
 
-  .col-sm-2.col-md-2.col-lg-2{:style => "background-color:white;"}
-    %a{:href => "#"} Search-2(ComingSoon)
-
-  .col-sm-2.col-md-2.col-lg-2{:style => "background-color:white;"}
-    = page_entries_info @tr_training_records, :entry_name => 'item'
             
 = paginate @tr_training_records
     
@@ -34,7 +29,7 @@
       %th= sort_link(@q, :details_of_training, TrTrainingRecord.human_attribute_name(:details_of_training))
       %th= sort_link(@q, :hours_trained, TrTrainingRecord.human_attribute_name(:hours_trained))
       %th= sort_link(@q, :location, TrTrainingRecord.human_attribute_name(:location))
-      %th= sort_link(@q, :swi, TrTrainingRecord.human_attribute_name(:swi))
+      %th= sort_link(@q, :swi, "SWI number")
       %th= sort_link(@q, :path_to_training_material, TrTrainingRecord.human_attribute_name(:path_to_training_material))
       %th= sort_link(@q, :tr_type, TrTrainingRecord.human_attribute_name(:tr_type))
       %th= sort_link(@q, :tr_customer, TrTrainingRecord.human_attribute_name(:tr_customer))
