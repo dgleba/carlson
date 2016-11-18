@@ -64,6 +64,6 @@ class TrTrainingEmployeesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def tr_training_employee_params
-    params.require(:tr_training_employee).permit(:name, :description, :output, :tr_training_record_id, :stf_employee_id, :searchm_cont, stf_employees_attributes: [:id, :clocknum, :name])
+    params.require(:tr_training_employee).permit(:id, :name, :description, :output, :tr_training_record_id, :stf_employee_id, :searchm_cont, stf_employees_attributes: [:id, :clocknum, :name])
   end
 end

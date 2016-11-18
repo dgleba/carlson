@@ -2,9 +2,9 @@
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <%= f.input :email, required: false, autofocus: true, label: raw('<strong>Email</strong>&nbsp;&nbsp; <span style="font-weight:normal;color:grey"><small>use windows login (e.g. jsmith)</small></span>') %>
+    <%= f.input :password, required: false, label:raw('<strong>Password</strong>&nbsp;&nbsp; <span style="font-weight:normal;color:grey"><small>your windows password</small></span>') %>
+    <span style="font-weight:normal;color:grey">If you need access to this system, and it doesn't work when you try to log in, please contact Stratford IT department to request access.</span>
   </div>
 
   <div class="form-actions">

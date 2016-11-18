@@ -25,4 +25,5 @@ class TrTrainingRecord < ActiveRecord::Base
     "##{id}, on:#{training_date}"
   end
 
+
 end

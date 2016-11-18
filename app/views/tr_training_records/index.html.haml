@@ -1,3 +1,24 @@
+:css
+  hr {height:1px;}
+  a {display:block;line-height:1em;}
+  #resize01 {height:40px;overflow:hidden;background:#eee;}
+  #viewmore, #viewless {
+      margin:0px 0 0 0;
+      padding:8px 5px;
+      background:#e9dbaf;
+      color:#fff;
+      display:inline-block;
+      text-decoration:none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  }
+
+/ background:#c2d6c2; pale green
+/ background:#e9dbaf; tan
+/ #f5e2bc pale orange
+/ #ffe6cc pale orange
+
 .container-fluid
 
 .row
@@ -5,16 +26,30 @@
     %ul.list-inline
       %li
         = link_to t('actions.create'), new_tr_training_record_path, class: 'btn btn-primary'
-      %li 
+      %li
         %h4{:class => "vcenter", :style => "color:black;margin-left:1px;"}= TrTrainingRecord.model_name.human
-  .col-sm-4.col-md-4.col-lg-4{:style => "background-color:white;"}
-    = search_form_for @q, class: 'search-form ' do |f|
-      .input-group
-        = f.search_field :id_cont, class: 'form-control'
-        %span.input-group-btn
-          %button.btn.btn-primary
-            %i.fa.fa-search    
 
+  .col-sm-4.col-md-4.col-lg-4{:style => "background-color:white;"}
+    %div#resize01
+      = search_form_for @q, {:class => "search-form"} do |f|
+        .input-group
+          / http://stackoverflow.com/questions/27451693/display-two-fields-side-by-side-in-a-bootstrap-form
+          = f.search_field most_tr_training_records_cont, class: 'form-control' , :placeholder => "Most fields..(enter one word)"
+          = f.search_field most2_tr_training_records_cont, class: 'form-control' , :placeholder => "Most fields.."
+          %span.input-group-addon{:class => "seperator1", :style => "max-width:1px;"} &nbsp
+          = f.search_field :tr_course_name_or_tr_program_name_cont_any, class: 'form-control', :placeholder => "Course name or Program"
+          = f.search_field :tr_type_name_eq, class: 'form-control', :placeholder => "Type"
+          %span.input-group-btn{:style => "vertical-align:top;"}
+            %button.btn.btn-primary
+              %i.fa.fa-search
+
+  .col-sm-2.col-md-2.col-lg-2{:style => "background-color:white;text-align: center;"}
+    <a href="#" id="viewmore">+ More (Search)</a>
+    <a href="#" id="viewless">- Less (Search)</a>
+
+  .col-sm-2.col-md-2.col-lg-2{:style => "background-color:white;"}
+    = page_entries_info @tr_training_records, :entry_name => 'item'
+    / this works..   &nbsp  ---- use &#032; instead of &nbsp; for just a plain whitespace.   
             
 = paginate @tr_training_records
     
@@ -60,3 +95,41 @@
         %td= tr_training_record.user
 
 = paginate @tr_training_records
+
+%hr
+
+/ old.. http://stackoverflow.com/questions/10340108/how-to-hide-html-div
+/ http://jsfiddle.net/arunpjohny/yjxzQ/
+/ http://stackoverflow.com/questions/16473299/remember-toggle-state-on-div-after-page-refresh
+
+%script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.js")
+
+:javascript
+  $(function() {
+
+  $('#viewless').hide();
+  $('#viewmore').click(function(){
+      var el = $('#resize01'),
+          curHeight = el.height(),
+          autoHeight = el.css('height', 'auto').height();
+      el.height(curHeight).animate({height: autoHeight}, 0);
+      $('#viewmore').hide();
+      $('#viewless').show();
+
+      $.cookie('viewmore', true);
+  });
+
+  $('#viewless').click(function(){
+      $('#resize01').animate({height: '40'}, 0);
+      $('#viewmore').show();
+      $('#viewless').hide();
+
+      $.cookie('viewmore', false);
+  });
+
+  if($.cookie('viewmore') == 'true'){
+      $('#viewmore').click();
+  } else {
+      $('#viewless').click();
+  }
+  });

@@ -8,8 +8,9 @@ class TrTrainingRecordsController < ApplicationController
 
   # GET /tr_training_records
   def index
-    @q = @tr_training_records.search params[:q]
-    @tr_training_records = @q.result.page(params[:page])
+    @q = @tr_training_records.ransack params[:q]
+    # ransack: include associated tables in the search..
+    @tr_training_records = @q.result.page(params[:page]).includes(:tr_course, :tr_type, :tr_program)
   end
 
   # GET /tr_training_records/1
