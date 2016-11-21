@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114183652) do
+ActiveRecord::Schema.define(version: 20161121203130) do
+
+  create_table "about_incidents_reader", force: :cascade do |t|
+    t.text "info", limit: 65535, null: false
+  end
+
+  create_table "about_incidents_reader__history", primary_key: "history__id", force: :cascade do |t|
+    t.string   "history__language", limit: 2
+    t.text     "history__comments", limit: 65535
+    t.string   "history__user",     limit: 32
+    t.integer  "history__state",    limit: 4,     default: 0
+    t.datetime "history__modified"
+    t.integer  "id",                limit: 4
+    t.integer  "info",              limit: 4
+  end
+
+  add_index "about_incidents_reader__history", ["history__modified"], name: "datekeys", using: :btree
+  add_index "about_incidents_reader__history", ["id"], name: "prikeys", using: :btree
 
   create_table "asset_eam", id: false, force: :cascade do |t|
     t.integer "id",                              limit: 4,   default: 0, null: false
@@ -72,6 +89,26 @@ ActiveRecord::Schema.define(version: 20161114183652) do
   add_index "audits", ["request_uuid"], name: "index_audits_on_request_uuid", using: :btree
   add_index "audits", ["user_id", "user_type"], name: "user_index", using: :btree
 
+  create_table "copy_employees", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "clock",      limit: 255
+    t.string   "sort",       limit: 255
+    t.boolean  "active",                 default: true
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "copy_employees", ["clock", "name"], name: "index_employees_on_clock_and_name", unique: true, using: :btree
+
+  create_table "copy_stf_employees", force: :cascade do |t|
+    t.string   "clocknum",      limit: 255
+    t.string   "name",          limit: 255
+    t.integer  "active_status", limit: 4
+    t.integer  "sort",          limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "corrective_actions", force: :cascade do |t|
     t.text     "name",             limit: 65535
     t.string   "responsible",      limit: 255
@@ -112,6 +149,11 @@ ActiveRecord::Schema.define(version: 20161114183652) do
   add_index "dataface__preferences", ["record_id"], name: "record_id", using: :btree
   add_index "dataface__preferences", ["table"], name: "table", using: :btree
   add_index "dataface__preferences", ["username"], name: "username", using: :btree
+
+  create_table "dataface__record_mtimes", primary_key: "recordhash", force: :cascade do |t|
+    t.string  "recordid", limit: 255, null: false
+    t.integer "mtime",    limit: 4,   null: false
+  end
 
   create_table "dataface__version", id: false, force: :cascade do |t|
     t.integer "version", limit: 4, default: 0, null: false
@@ -247,13 +289,15 @@ ActiveRecord::Schema.define(version: 20161114183652) do
   end
 
   create_table "stf_employees", force: :cascade do |t|
-    t.string   "clocknum",      limit: 255
     t.string   "name",          limit: 255
-    t.integer  "active_status", limit: 4
+    t.string   "clocknum",      limit: 255
+    t.integer  "active_status", limit: 4,   default: 1
     t.integer  "sort",          limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
+
+  add_index "stf_employees", ["clocknum", "name"], name: "index_stf_employees_on_clocknum_and_name", unique: true, using: :btree
 
   create_table "tr_cells", force: :cascade do |t|
     t.string   "name",          limit: 255
@@ -265,6 +309,7 @@ ActiveRecord::Schema.define(version: 20161114183652) do
 
   create_table "tr_courses", force: :cascade do |t|
     t.string   "name",        limit: 255
+    t.string   "number",      limit: 255
     t.string   "category",    limit: 255
     t.string   "description", limit: 255
     t.datetime "created_at",              null: false
@@ -303,6 +348,9 @@ ActiveRecord::Schema.define(version: 20161114183652) do
     t.integer  "stf_employee_id",       limit: 4
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "status",                limit: 4
+    t.string   "ohsa_reportable",       limit: 255
+    t.float    "length_of_service",     limit: 24
   end
 
   add_index "tr_training_employees", ["stf_employee_id"], name: "index_tr_training_employees_on_stf_employee_id", using: :btree
@@ -325,6 +373,7 @@ ActiveRecord::Schema.define(version: 20161114183652) do
     t.integer  "user_id",                   limit: 4
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+    t.string   "plant",                     limit: 255
   end
 
   add_index "tr_training_records", ["stf_asset_id"], name: "index_tr_training_records_on_stf_asset_id", using: :btree

@@ -28,9 +28,13 @@ class Ability
       # can :create, [ Customer,Vehicle, RentalRecord, Passenger]
       # can :update, [  RentalRecord,  Passenger]
       
-      # limit view and edit of Customer to only the user who created it.. 2016-10-29
-      #        see ...\rails-know\rail303-seeownrecords\rail303b-userseesownrecords.txt
-      can [:read, :create, :update], Customer, :user_id => user.id
+      can :manage, [ TrTrainingRecord, TrTrainingEmployee ], :user_id => user.id
+      #
+      cannot :destroy,  [ TrTrainingRecord, TrTrainingEmployee ]
+      cannot :update, [TrTrainingRecord]
+      can :read, [TrTrainingRecord, StfEmployee, ]
+      can :create, [TrTrainingRecord]
+      can :update, [TrTrainingRecord], :user_id => user.id
 
       # no luck.. NoMethodError in CustomersController#index undefined method `ransack' for nil:NilClass
       # can :read, Customer do |c|

@@ -1,8 +1,8 @@
 class CreateStfEmployees < ActiveRecord::Migration
   def change
     create_table :stf_employees do |t|
-      t.string :clocknum
       t.string :name
+      t.string :clocknum
       t.integer :active_status
       t.integer :sort
 
