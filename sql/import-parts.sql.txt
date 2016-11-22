@@ -1,0 +1,18 @@
+ 
+2016-11-21_Mon_16.54-PM:
+
+# cannot have nulls with my import only new unique entries methods.
+
+update greygold.scrap_Parts  set Description = '-' where Description is Null;
+
+
+
+# -- this will import new records. Since there is a unique index on combined : (`partnumber`,`name`) and each is not null,
+# -- it will only import new unique entries.
+
+
+
+INSERT ignore INTO hrdb.tr_parts (`partnumber`,`name`) SELECT distinct `PartID`,`Description` FROM greygold.scrap_Parts 
+
+_____________
+
