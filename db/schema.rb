@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122131005) do
+ActiveRecord::Schema.define(version: 20161124154803) do
 
   create_table "about_incidents_reader", force: :cascade do |t|
     t.text "info", limit: 65535, null: false
@@ -265,6 +265,11 @@ ActiveRecord::Schema.define(version: 20161122131005) do
     t.datetime "created_at",                                            null: false
     t.datetime "updated_at",                                            null: false
     t.string   "hr_manager",                              limit: 255
+    t.string   "status",                                  limit: 255
+    t.string   "ohsa_reportable",                         limit: 255
+    t.float    "length_of_service",                       limit: 24
+    t.string   "plant",                                   limit: 255
+    t.date     "return_to_work_date"
   end
 
   add_index "incidents", ["corrective_action_id"], name: "index_incidents_on_corrective_action_id", using: :btree
@@ -312,12 +317,14 @@ ActiveRecord::Schema.define(version: 20161122131005) do
   add_index "tr_cells", ["name", "operation", "operationid"], name: "name_operation_operationid", unique: true, using: :btree
 
   create_table "tr_courses", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "number",      limit: 255
-    t.string   "category",    limit: 255
-    t.string   "description", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",          limit: 255
+    t.string   "number",        limit: 255
+    t.string   "category",      limit: 255
+    t.string   "description",   limit: 255
+    t.integer  "active_status", limit: 4,   default: 1,  null: false
+    t.integer  "sort",          limit: 4,   default: 51
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "tr_customers", force: :cascade do |t|
@@ -352,8 +359,6 @@ ActiveRecord::Schema.define(version: 20161122131005) do
   end
 
   create_table "tr_training_employees", force: :cascade do |t|
-    t.string   "name",                  limit: 255
-    t.string   "description",           limit: 255
     t.text     "output",                limit: 65535
     t.integer  "tr_training_record_id", limit: 4
     t.integer  "stf_employee_id",       limit: 4
@@ -382,6 +387,7 @@ ActiveRecord::Schema.define(version: 20161122131005) do
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.string   "plant",                     limit: 255
+    t.string   "trainer",                   limit: 255
   end
 
   add_index "tr_training_records", ["stf_asset_id"], name: "index_tr_training_records_on_stf_asset_id", using: :btree
@@ -395,11 +401,13 @@ ActiveRecord::Schema.define(version: 20161122131005) do
 
   create_table "tr_types", force: :cascade do |t|
     t.string   "name",          limit: 255
-    t.integer  "active_status", limit: 4
+    t.integer  "active_status", limit: 4,   default: 1, null: false
     t.integer  "sort",          limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
+
+  add_index "tr_types", ["name"], name: "name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255

@@ -1,10 +1,6 @@
 %h1= TrTrainingEmployee.model_name.human.singularize
 
 %dl.dl-horizontal
-  %dt= TrTrainingEmployee.human_attribute_name :name
-  %dd= @tr_training_employee.name
-  %dt= TrTrainingEmployee.human_attribute_name :description
-  %dd= @tr_training_employee.description
   %dt= TrTrainingEmployee.human_attribute_name :tr_training_record
   %dd= @tr_training_employee.tr_training_record
   %dt= TrTrainingEmployee.human_attribute_name :stf_employee
@@ -16,15 +12,15 @@
       %canvas.pad{:height => "111", :width => "311"}    
     
   %br
-  = link_to t('actions.edit'), edit_tr_training_employee_path(@tr_training_employee), class: 'btn btn-primary'
-  &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp
+  /= link_to t('actions.edit'), edit_tr_training_employee_path(@tr_training_employee), class: 'btn btn-primary'
+  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
   = link_to t('actions.back'), tr_training_employees_path
   %hr
 
   %br
   %br
-  %dt= TrTrainingEmployee.human_attribute_name :output
-  %dd= @tr_training_employee.output.truncate(100).present?
+  /%dt= TrTrainingEmployee.human_attribute_name :output
+  /%dd= @tr_training_employee.output.truncate(100).present?
 
   :javascript
     $(document).ready(function() {

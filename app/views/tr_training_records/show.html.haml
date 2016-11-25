@@ -9,6 +9,8 @@
   %dd= @tr_training_record.details_of_training
   %dt= TrTrainingRecord.human_attribute_name :hours_trained
   %dd= @tr_training_record.hours_trained
+  %dt= TrTrainingRecord.human_attribute_name :trainer
+  %dd= @tr_training_record.trainer
   %dt= TrTrainingRecord.human_attribute_name :location
   %dd= @tr_training_record.location
   %dt= "SWI number"
@@ -27,7 +29,7 @@
   %dd= @tr_training_record.tr_cell
   %dt= TrTrainingRecord.human_attribute_name :stf_asset
   %dd= @tr_training_record.stf_asset
-  %dt= TrTrainingRecord.human_attribute_name :user
+  %dt= 'Creator'
   %dd= @tr_training_record.user
 
 

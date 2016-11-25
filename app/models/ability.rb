@@ -28,13 +28,20 @@ class Ability
       # can :create, [ Customer,Vehicle, RentalRecord, Passenger]
       # can :update, [  RentalRecord,  Passenger]
       
-      can :manage, [ TrTrainingRecord, TrTrainingEmployee ], :user_id => user.id
+      can :manage, [ TrTrainingRecord, TrTrainingEmployee ]
       #
       cannot :destroy,  [ TrTrainingRecord, TrTrainingEmployee ]
-      cannot :update, [TrTrainingRecord]
-      can :read, [TrTrainingRecord, StfEmployee, ]
-      can :create, [TrTrainingRecord]
-      can :update, [TrTrainingRecord], :user_id => user.id
+      can :read, :all
+      
+     elsif user.sc_supervisor?
+      can :manage, :all
+      cannot :destroy,  [ TrTrainingRecord, TrTrainingEmployee ]
+      cannot :destroy, [StfEmployee, StfAsset]
+      cannot :create, [StfEmployee, StfAsset]
+      cannot :update, [StfEmployee, StfAsset]
+      #
+      #
+
 
       # no luck.. NoMethodError in CustomersController#index undefined method `ransack' for nil:NilClass
       # can :read, Customer do |c|

@@ -1,4 +1,4 @@
-.nested-fields.well.well-compact
+.nested-fields.well.well-sm
   / use assocation below... = f.input :name
 
   / http://stackoverflow.com/questions/8766624/if-database-entry-is-empty-show-this-message-in-view
@@ -8,7 +8,7 @@
     = f.association :stf_employee
     %p Signature Previously Requested
   - else
-    = f.association :stf_employee, :as => :collection_select, collection: StfEmployee.order(:name, :clocknum).where(active_status: true), :label_method => lambda { |stf_employee| "#{stf_employee.name} , #{stf_employee.clocknum}" }
+    = f.association :stf_employee, :as => :collection_select, collection: StfEmployee.order(:name, :clocknum).where(active_status: 1), :label_method => lambda { |stf_employee| "#{stf_employee.name} , #{stf_employee.clocknum}" }
     .sigPad
       %p.drawItDesc Draw your signature
       %ul.sigNav
@@ -16,9 +16,9 @@
           %a{:href => "#clear"} Clear
       .sig.sigWrapper
         .typed
-        %canvas.pad{:height => "105", :width => "300"}
+        %canvas.pad{:height => "125", :width => "400"}
         = f.input :output , as: :hidden , input_html: { class: 'output' }
-      
+    = link_to_remove_association "remove tr_training_employee", f   
   %div
   %br    
 
@@ -32,7 +32,10 @@
           bgColour : '#F0FEEF'
            , drawOnly : true
         };
-      
+      //var c = document.getElementById("myPad");
+      //var ctx = c.getContext("2d");
+      //ctx.scale(1.5, 1.5);
+
       // if sigpad is not in a cocoon nested form.. 
       // also, without this, it won't show sigpad when edit is pressed. 2016-06-24.  
       $('.sigPad').signaturePad(dgoptions);
@@ -54,7 +57,8 @@
           $(".dgselect2").select2({
         });
         })
-    }); 
+    });
+
     
-  = link_to_remove_association "remove tr_training_employee", f    
+   
     

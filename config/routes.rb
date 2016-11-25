@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :tr_training_employees
   resources :tr_training_records
   resources :tr_courses
   resources :tr_training_employees

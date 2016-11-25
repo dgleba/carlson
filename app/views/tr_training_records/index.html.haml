@@ -63,6 +63,7 @@
       %th= sort_link(@q, :training_date, TrTrainingRecord.human_attribute_name(:training_date))
       %th= sort_link(@q, :details_of_training, TrTrainingRecord.human_attribute_name(:details_of_training))
       %th= sort_link(@q, :hours_trained, TrTrainingRecord.human_attribute_name(:hours_trained))
+      %th= sort_link(@q, :trainer, TrTrainingRecord.human_attribute_name(:trainer))
       %th= sort_link(@q, :location, TrTrainingRecord.human_attribute_name(:location))
       %th= sort_link(@q, :swi, "SWI number")
       %th= sort_link(@q, :path_to_training_material, TrTrainingRecord.human_attribute_name(:path_to_training_material))
@@ -72,7 +73,8 @@
       %th= sort_link(@q, :tr_part, TrTrainingRecord.human_attribute_name(:tr_part))
       %th= sort_link(@q, :tr_cell, TrTrainingRecord.human_attribute_name(:tr_cell))
       %th= sort_link(@q, :stf_asset, TrTrainingRecord.human_attribute_name(:stf_asset))
-      %th= sort_link(@q, :user, TrTrainingRecord.human_attribute_name(:user))
+      %th= sort_link(@q, :id, TrTrainingRecord.human_attribute_name(:id))
+      /%th= sort_link(@q, :user, TrTrainingRecord.human_attribute_name(:user))
 
   %tbody
     - @tr_training_records.each do |tr_training_record|
@@ -83,6 +85,7 @@
         %td= tr_training_record.training_date
         %td= tr_training_record.details_of_training
         %td= tr_training_record.hours_trained
+        %td= tr_training_record.trainer
         %td= tr_training_record.location
         %td= tr_training_record.swi
         %td= tr_training_record.path_to_training_material
@@ -92,7 +95,8 @@
         %td= tr_training_record.tr_part
         %td= tr_training_record.tr_cell
         %td= tr_training_record.stf_asset
-        %td= tr_training_record.user
+        %td= tr_training_record.id
+        /%td= tr_training_record.user
 
 = paginate @tr_training_records
 

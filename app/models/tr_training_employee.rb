@@ -7,15 +7,10 @@ class TrTrainingEmployee < ActiveRecord::Base
   before_save :searchm 
   accepts_nested_attributes_for :stf_employee
   
-  #name field base on stf_employee field
-  before_create :set_name
-  before_update :set_name
+
   # use audited for model record history
   audited
   
-  def set_name
-    self.name = self.stf_employee.name
-  end
   
   def searchm
     # i also tried searchm_cont
