@@ -9,5 +9,6 @@ rails g migration add_unique_constraint_to_stf_employees_clocknum_name
 
 rails g migration add_unique_constraint_to_tr_parts_name_partnumber
 
+rails g migration add_unique_constraint_to_sft_assets_asset_descr
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

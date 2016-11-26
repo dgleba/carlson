@@ -1,0 +1,32 @@
+
+/* try to make objects larger on smaller devices..2016-11-24 ..  */
+
+/* https://coderwall.com/p/wpjw4w/change-the-bootstrap-navbar-breakpoint */
+/* http://stephen.io/mediaqueries/   */
+/* http://stackoverflow.com/questions/21703356/bootstrap-change-container-width-on-ipad  */
+/*    */
+
+@media only screen 
+and (min-device-width : 555px) 
+and (max-device-width : 799px)
+ {
+ /* and (-webkit-min-device-pixel-ratio: 2) */
+ /* STYLES GO HERE */
+ /* .container-fluid{width: 670px;} */
+  .container-fluid{width: 570px;} 
+  
+
+  .navbar-header {         float: none;     }
+  .navbar-left,.navbar-right {         float: none !important;     }
+  .navbar-toggle {         display: block;     }
+  .navbar-collapse {         border-top: 1px solid transparent;         box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);     }
+  .navbar-fixed-top {         top: 0;         border-width: 0 0 1px;     }
+  .navbar-collapse.collapse {         display: none!important;     }
+  .navbar-nav {         float: none!important;        margin-top: 7.5px;    }
+  .navbar-nav>li {        float: none;    }
+  .navbar-nav>li>a {        padding-top: 10px;        padding-bottom: 10px;    }
+  .collapse.in{        display:block !important;    }
+ }
+
+/* ..end.. try to make objects larger on smaller devices..2016-11-24 */
+

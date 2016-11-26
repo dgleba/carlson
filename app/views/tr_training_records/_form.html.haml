@@ -5,7 +5,7 @@
     .well.well-sm{:style => "background-color:#ffe6ff;"}
       %ul.list-inline
         %li
-          = f.association :tr_course, :as => :collection_select, collection:TrCourse.order(:name, :number).where(active_status: 1), :label_method => lambda { |tr_course| "#{tr_course.name}, #{tr_course.number}" }, label: 'Training Course'
+          = f.association :tr_course, :as => :collection_select, collection:TrCourse.order(:name, :id).where(active_status: 1), :label_method => lambda { |tr_course| "#{tr_course.name}, #{tr_course.id}" }, label: 'Training Course'
         %li
           = f.input :training_date
         %li

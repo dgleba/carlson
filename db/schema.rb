@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124154803) do
+ActiveRecord::Schema.define(version: 20161125165024) do
 
   create_table "about_incidents_reader", force: :cascade do |t|
     t.text "info", limit: 65535, null: false
@@ -292,6 +292,8 @@ ActiveRecord::Schema.define(version: 20161124154803) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
   end
+
+  add_index "stf_assets", ["assetnum", "description"], name: "index_stf_assets_on_assetnum_and_description", unique: true, using: :btree
 
   create_table "stf_employees", force: :cascade do |t|
     t.string   "name",          limit: 255
