@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :search_tests
   resources :searches
   resources :tr_training_employees
   resources :tr_training_records

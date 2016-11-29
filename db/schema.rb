@@ -291,6 +291,13 @@ ActiveRecord::Schema.define(version: 20161129161822) do
     t.string "course_name",   limit: 255
   end
 
+  create_table "search_test", id: false, force: :cascade do |t|
+    t.string "clocknum",      limit: 255
+    t.string "employee",      limit: 255
+    t.date   "training_date"
+    t.string "course_name",   limit: 255
+  end
+
   create_table "stf_assets", force: :cascade do |t|
     t.string   "assetnum",      limit: 255
     t.string   "description",   limit: 255

@@ -2,13 +2,13 @@ class ViewCreateSearch < ActiveRecord::Migration
   def change
   
   ActiveRecord::Base.connection.execute <<-SQL
-    Drop view if exists search;
+    Drop view if exists search_test;
   SQL
 
   ActiveRecord::Base.connection.execute <<-SQL
     
 CREATE OR REPLACE
-     VIEW search
+     VIEW search_test
      AS 
      Select  
         se.clocknum AS clocknum,se.name AS employee, rc.training_date AS training_date, (Select tr_courses.name from tr_courses where tr_courses.id = rc.tr_course_id) AS course_name
