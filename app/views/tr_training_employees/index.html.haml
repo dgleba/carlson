@@ -34,11 +34,11 @@
       = search_form_for @q, {:class => "search-form"} do |f|
         .input-group
           / http://stackoverflow.com/questions/27451693/display-two-fields-side-by-side-in-a-bootstrap-form
-          = f.search_field most_tr_training_employees_cont, class: 'form-control' , :placeholder => "Most fields..(enter one word)"
+          = f.search_field :tr_training_record_id_eq, class: 'form-control', :placeholder => "Tr Training Record ID"
           = f.search_field most2_tr_training_employees_cont, class: 'form-control' , :placeholder => "Most fields.."
           %span.input-group-addon{:class => "seperator1", :style => "max-width:1px;"} &nbsp
           = f.search_field :stf_employee_name_or_stf_employee_clocknum_cont_any, class: 'form-control', :placeholder => "Name or Clock"
-          = f.search_field :tr_training_record_id_eq, class: 'form-control', :placeholder => "Tr Training Record ID"
+          = f.search_field most_tr_training_employees_cont, class: 'form-control' , :placeholder => "Most fields..(enter one word)"
           %span.input-group-btn{:style => "vertical-align:top;"}
             %button.btn.btn-primary
               %i.fa.fa-search

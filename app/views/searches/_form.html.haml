@@ -1,0 +1,14 @@
+= simple_form_for(@search) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :clocknum
+    = f.input :employee
+    = f.input :training_date
+    = f.input :course_name
+
+  .form-actions
+    = f.button :submit
+    &nbsp &nbsp | &nbsp &nbsp
+    = link_to t('actions.back'), searches_path
+  %hr
