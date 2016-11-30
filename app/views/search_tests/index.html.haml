@@ -35,9 +35,9 @@
         .input-group
           / http://stackoverflow.com/questions/27451693/display-two-fields-side-by-side-in-a-bootstrap-form
           = f.search_field text1_search_tests_cont, class: 'form-control' , :placeholder => "Most fields..(enter one word)"
-          = f.search_field most2_search_tests_cont, class: 'form-control' , :placeholder => "Most fields.."
+          = f.search_field text2_search_tests_cont, class: 'form-control' , :placeholder => "Most fields..No clocknum or num"
           %span.input-group-addon{:class => "seperator1", :style => "max-width:1px;"} &nbsp
-          = f.search_field most_search_tests_cont, class: 'form-control' , :placeholder => "Most fields..(enter one word)"          
+          = f.search_field most_search_tests_cont, class: 'form-control', :placeholder => "Most fields..Num is fine"          
           = f.search_field :training_date_cont, class: 'form-control', :placeholder => "Training Date"
           %span.input-group-btn{:style => "vertical-align:top;"}
             %button.btn.btn-primary
