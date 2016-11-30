@@ -6,23 +6,23 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
- r1 = Role.create({name: "sc_admin", description: "Can perform any CRUD operation on any resource"})
- r2 = Role.create({name: "sc_minimal", description: ""})
- r3 = Role.create({name: "sc_readonly", description: ""})
- r4 = Role.create({name: "sc_create", description: ""})
- r5 = Role.create({name: "sc_regular", description: "Can edit data, readonly lookup tables"})
- r6 = Role.create({name: "sc_supervisor", description: "Can edit lookup tables"})
- r7 = Role.create({name: "sc_delete", description: ""})
- r8 = Role.create({name: "sc_vip", description: ""})
- r9 = Role.create({name: "sc_special1", description: ""})
-r10 = Role.create({name: "sc_seller", description: ""})
+ # r1 = Role.create({name: "sc_admin", description: "Can perform any CRUD operation on any resource"})
+ # r2 = Role.create({name: "sc_minimal", description: ""})
+ # r3 = Role.create({name: "sc_readonly", description: ""})
+ # r4 = Role.create({name: "sc_create", description: ""})
+ # r5 = Role.create({name: "sc_regular", description: "Can edit data, readonly lookup tables"})
+ # r6 = Role.create({name: "sc_supervisor", description: "Can edit lookup tables"})
+ # r7 = Role.create({name: "sc_delete", description: ""})
+ # r8 = Role.create({name: "sc_vip", description: ""})
+ # r9 = Role.create({name: "sc_special1", description: ""})
+# r10 = Role.create({name: "sc_seller", description: ""})
 
 #
-  User.create! email: 'a@e', name: 'admin' , password: 'a', password_confirmation: 'a', role_id: r1.id
-  User.create! email: 'a', name: 'admin' , password: 'a', password_confirmation: 'a', role_id: r1.id
+  # User.create! email: 'a@e', name: 'admin' , password: 'a', password_confirmation: 'a', role_id: r1.id
+  # User.create! email: 'a', name: 'admin' , password: 'a', password_confirmation: 'a', role_id: r1.id
 #
-   u1 = User.create({name: "reg", email: "r", password: "a", password_confirmation: "a", role_id: r5.id})
-   u2 = User.create({name: "miniml", email: "m", password: "a", password_confirmation: "a", role_id: r2.id})
+   # u1 = User.create({name: "reg", email: "r", password: "a", password_confirmation: "a", role_id: r5.id})
+   # u2 = User.create({name: "miniml", email: "m", password: "a", password_confirmation: "a", role_id: r2.id})
 #   u3 = User.create({name: "sKev", email: "k@e", password: "a", password_confirmation: "a", role_id: r2.id})
 #   u4 = User.create({name: "admin", email: "a", password: "a", password_confirmation: "a", role_id: r3.id})
 
@@ -102,4 +102,22 @@ r10 = Role.create({name: "sc_seller", description: ""})
   # {name: "admin", email: "a@e", crypted_password: "a", salt: "ZJWekpbdoueH96r9D8qS", role_id: 3},
   # {name: "admin", email: "a", crypted_password: "a", salt: "uiHnbcb1jUqsDdg9awHp", role_id: 3}
 # ])
-
+TrTrainingRecord.create!([
+  {id: 23, tr_course_id: 1447, training_date: "2016-01-10", hours_trained: 2.3, created_at: nil, updated_at: nil},
+  {id: 24, tr_course_id: 1454, training_date: "2016-01-10", hours_trained: 3, created_at: nil, updated_at: nil},
+  {id: 25, tr_course_id: 1455, training_date: "2016-02-10", hours_trained: 8, created_at: nil, updated_at: nil},
+  {id: 26, tr_course_id: 1457, training_date: "2016-03-10", hours_trained: 6, created_at: nil, updated_at: nil},
+  {id: 27, tr_course_id: 1458, training_date: "2016-03-10", hours_trained: 24, created_at: nil, updated_at: nil},
+  {id: 28, tr_course_id: 1460, training_date: "2016-03-10", hours_trained: 12, created_at: nil, updated_at: nil},
+  {id: 29, tr_course_id: 1461, training_date: "2016-05-10", hours_trained: 40, created_at: nil, updated_at: nil},
+  {id: 30, tr_course_id: 1466, training_date: "2016-05-10", hours_trained: 16, created_at: nil, updated_at: nil},
+  {id: 31, tr_course_id: 1467, training_date: "2016-06-10", hours_trained: 5, created_at: nil, updated_at: nil},
+  {id: 32, tr_course_id: 1468, training_date: "2016-07-10", hours_trained: 1.5, created_at: nil, updated_at: nil},
+  {id: 33, tr_course_id: 1469, training_date: "2016-07-10", hours_trained: 0.5, created_at: nil, updated_at: nil},
+  {id: 34, tr_course_id: 1470, training_date: "2016-07-10", hours_trained: 0.12, created_at: nil, updated_at: nil},
+  {id: 35, tr_course_id: 1471, training_date: "2016-08-10", hours_trained: 3.3, created_at: nil, updated_at: nil},
+  {id: 36, tr_course_id: 1474, training_date: "2016-09-10", hours_trained: 4.1, created_at: nil, updated_at: nil},
+  {id: 37, tr_course_id: 1475, training_date: "2016-09-10", hours_trained: 5.6, created_at: nil, updated_at: nil},
+  {id: 38, tr_course_id: 1479, training_date: "2016-10-10", hours_trained: 22, created_at: nil, updated_at: nil},
+  {id: 39, tr_course_id: 1481, training_date: "2016-10-10", hours_trained: 14, created_at: nil, updated_at: nil},
+])

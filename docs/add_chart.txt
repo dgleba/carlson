@@ -1,0 +1,10 @@
+
+Display graph in rails:
+
+Add this line to your application's Gemfile:
+gem 'chartkick'
+gem 'groupdate'
+
+In application.js, add:
+//= require Chart.bundle
+//= require chartkick

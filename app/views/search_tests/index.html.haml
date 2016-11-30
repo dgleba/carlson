@@ -20,7 +20,7 @@
 / #ffe6cc pale orange
 
 .container-fluid
-= line_chart TrTrainingEmployee.joins(:tr_training_record).group("DAY(tr_training_records.training_date)").sum("tr_training_records.hours_trained")
+= line_chart TrTrainingEmployee.joins(:tr_training_record).group("MONTH(tr_training_records.training_date)").sum("tr_training_records.hours_trained")
 .row
   .col-sm-2.col-md-3.col-lg-3{:style => "background-color:white;"}
     %ul.list-inline
