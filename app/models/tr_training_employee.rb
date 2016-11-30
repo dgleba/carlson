@@ -19,4 +19,5 @@ class TrTrainingEmployee < ActiveRecord::Base
   def srch
     [ tr_training_record_id, stf_employee.name, stf_employee.clocknum ].compact.to_sentence
   end
+  
 end

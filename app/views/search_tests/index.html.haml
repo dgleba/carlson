@@ -1,25 +1,55 @@
-.container-fluid
+:css
+  hr {height:1px;}
+  a {display:block;line-height:1em;}
+  #resize01 {height:40px;overflow:hidden;background:#eee;}
+  #viewmore, #viewless {
+      margin:0px 0 0 0;
+      padding:8px 5px;
+      background:#e9dbaf;
+      color:#fff;
+      display:inline-block;
+      text-decoration:none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  }
 
+/ background:#c2d6c2; pale green
+/ background:#e9dbaf; tan
+/ #f5e2bc pale orange
+/ #ffe6cc pale orange
+
+.container-fluid
+= line_chart TrTrainingEmployee.joins(:tr_training_record).group("DAY(tr_training_records.training_date)").sum("tr_training_records.hours_trained")
 .row
   .col-sm-2.col-md-3.col-lg-3{:style => "background-color:white;"}
     %ul.list-inline
+      /%li
+      /  = link_to t('actions.create'), new_search_test_path, class: 'btn btn-primary'
       %li
-        = link_to t('actions.create'), new_search_test_path, class: 'btn btn-primary'
-      %li 
         %h4{:class => "vcenter", :style => "color:black;margin-left:1px;"}= SearchTest.model_name.human
-  .col-sm-4.col-md-4.col-lg-4{:style => "background-color:white;"}
-    = search_form_for @q, class: 'search-form ' do |f|
-      .input-group
-        = f.search_field :clocknum_cont, class: 'form-control'
-        %span.input-group-btn
-          %button.btn.btn-primary
-            %i.fa.fa-search    
 
-  .col-sm-2.col-md-2.col-lg-2{:style => "background-color:white;"}
-    %a{:href => "#"} Search-2(ComingSoon)
+  .col-sm-4.col-md-4.col-lg-4{:style => "background-color:white;"}
+    %div#resize01
+      = search_form_for @q, {:class => "search-form"} do |f|
+        .input-group
+          / http://stackoverflow.com/questions/27451693/display-two-fields-side-by-side-in-a-bootstrap-form
+          = f.search_field text1_search_tests_cont, class: 'form-control' , :placeholder => "Most fields..(enter one word)"
+          = f.search_field most2_search_tests_cont, class: 'form-control' , :placeholder => "Most fields.."
+          %span.input-group-addon{:class => "seperator1", :style => "max-width:1px;"} &nbsp
+          = f.search_field most_search_tests_cont, class: 'form-control' , :placeholder => "Most fields..(enter one word)"          
+          = f.search_field :training_date_cont, class: 'form-control', :placeholder => "Training Date"
+          %span.input-group-btn{:style => "vertical-align:top;"}
+            %button.btn.btn-primary
+              %i.fa.fa-search
+
+  .col-sm-2.col-md-2.col-lg-2{:style => "background-color:white;text-align: center;"}
+    <a href="#" id="viewmore">+ More (Search)</a>
+    <a href="#" id="viewless">- Less (Search)</a>
 
   .col-sm-2.col-md-2.col-lg-2{:style => "background-color:white;"}
     = page_entries_info @search_tests, :entry_name => 'item'
+    / this works..   &nbsp  ---- use &#032; instead of &nbsp; for just a plain whitespace. 
             
 = paginate @search_tests
     
@@ -33,6 +63,8 @@
       %th= sort_link(@q, :employee, SearchTest.human_attribute_name(:employee))
       %th= sort_link(@q, :training_date, SearchTest.human_attribute_name(:training_date))
       %th= sort_link(@q, :course_name, SearchTest.human_attribute_name(:course_name))
+      %th= sort_link(@q, :id, SearchTest.human_attribute_name(:id))
+      %th= sort_link(@q, :training_record, 'Training Record id')
 
   %tbody
     - @search_tests.each do |search_test|
@@ -43,5 +75,42 @@
         %td= search_test.employee
         %td= search_test.training_date
         %td= search_test.course_name
+        %td= search_test.id
+        %td= search_test.training_record_id
 
 = paginate @search_tests
+/ old.. http://stackoverflow.com/questions/10340108/how-to-hide-html-div
+/ http://jsfiddle.net/arunpjohny/yjxzQ/
+/ http://stackoverflow.com/questions/16473299/remember-toggle-state-on-div-after-page-refresh
+
+%script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.js")
+
+:javascript
+  $(function() {
+
+  $('#viewless').hide();
+  $('#viewmore').click(function(){
+      var el = $('#resize01'),
+          curHeight = el.height(),
+          autoHeight = el.css('height', 'auto').height();
+      el.height(curHeight).animate({height: autoHeight}, 0);
+      $('#viewmore').hide();
+      $('#viewless').show();
+
+      $.cookie('viewmore', true);
+  });
+
+  $('#viewless').click(function(){
+      $('#resize01').animate({height: '40'}, 0);
+      $('#viewmore').show();
+      $('#viewless').hide();
+
+      $.cookie('viewmore', false);
+  });
+
+  if($.cookie('viewmore') == 'true'){
+      $('#viewmore').click();
+  } else {
+      $('#viewless').click();
+  }
+  });

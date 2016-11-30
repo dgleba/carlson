@@ -1,0 +1,2 @@
+rails generate scaffold SearchTest clocknum:string employee:string training_date:date course_name:string id:integer training_record:references --no-migration
+

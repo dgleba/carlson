@@ -8,7 +8,7 @@ class SearchTestsController < ApplicationController
 
   # GET /search_tests
   def index
-    @q = @search_tests.search params[:q]
+    @q = @search_tests.ransack params[:q]
     @search_tests = @q.result.page(params[:page])
   end
 
@@ -63,6 +63,6 @@ class SearchTestsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def search_test_params
-    params.require(:search_test).permit(:clocknum, :employee, :training_date, :course_name)
+    params.require(:search_test).permit(:clocknum, :employee, :training_date, :course_name, :id, :training_record_id)
   end
 end

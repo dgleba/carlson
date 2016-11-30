@@ -117,3 +117,6 @@ gem 'yaml_db'
 #
 
 gem "devise_ldap_authenticatable", :git => "git://github.com/cschiewek/devise_ldap_authenticatable.git"
+
+gem 'chartkick'
+gem 'groupdate'

@@ -9,6 +9,10 @@
   %dd= @search_test.training_date
   %dt= SearchTest.human_attribute_name :course_name
   %dd= @search_test.course_name
+  %dt= SearchTest.human_attribute_name :id
+  %dd= @search_test.id
+  %dt= SearchTest.human_attribute_name :training_record
+  %dd= @search_test.training_record
 
 = link_to t('actions.edit'), edit_search_test_path(@search_test), class: 'btn btn-primary'
 &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp
