@@ -1,10 +1,13 @@
-
+---------------------------------------------------------
 Display graph in rails:
 
-Add this line to your application's Gemfile:
+1.Add this line to your application's Gemfile:
 gem 'chartkick'
 gem 'groupdate'
 
-In application.js, add:
+2.In application.js, add:
 //= require Chart.bundle
 //= require chartkick
+
+3.In ...views\search_tests\index.html.haml (I think this works in any view), add:
+= line_chart TrTrainingEmployee.joins(:tr_training_record).group("MONTH(tr_training_records.training_date)").sum("tr_training_records.hours_trained"), xtitle:'Month', ytitle:'Training Hours in Total'

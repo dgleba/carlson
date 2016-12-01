@@ -20,7 +20,8 @@
 / #ffe6cc pale orange
 
 .container-fluid
-= line_chart TrTrainingEmployee.joins(:tr_training_record).group("MONTH(tr_training_records.training_date)").sum("tr_training_records.hours_trained")
+= line_chart TrTrainingEmployee.joins(:tr_training_record).group("MONTH(tr_training_records.training_date)").sum("tr_training_records.hours_trained"), xtitle:'Month', ytitle:'Training Hours in Total', label: "hours"
+%br
 .row
   .col-sm-2.col-md-3.col-lg-3{:style => "background-color:white;"}
     %ul.list-inline
@@ -37,7 +38,7 @@
           = f.search_field text1_search_tests_cont, class: 'form-control' , :placeholder => "Most fields..(enter one word)"
           = f.search_field text2_search_tests_cont, class: 'form-control' , :placeholder => "Most fields..No clocknum or num"
           %span.input-group-addon{:class => "seperator1", :style => "max-width:1px;"} &nbsp
-          = f.search_field most_search_tests_cont, class: 'form-control', :placeholder => "Most fields..Num is fine"          
+          = f.search_field text3_search_tests_cont, class: 'form-control', :placeholder => "Most fields.."          
           = f.search_field :training_date_cont, class: 'form-control', :placeholder => "Training Date"
           %span.input-group-btn{:style => "vertical-align:top;"}
             %button.btn.btn-primary

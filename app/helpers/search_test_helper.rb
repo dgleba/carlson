@@ -69,11 +69,8 @@ module SearchTestHelper
     attributes_to_exclude = [
       "created_at",
       "updated_at",
-      "id",
-      "training_record_id",
-      "rsackdummy3"
     ]
-    SearchTest.columns.select{ |c| c.type == :string || c.type == :text }.map(&:name).each do |column_name|
+    SearchTest.columns.select{ |c| c.type == :string || c.type == :text || c.type == :integer }.map(&:name).each do |column_name|
       most_attributes << column_name unless column_name.in?(attributes_to_exclude)
     end
     most_attributes.join("_or_") + "_cont_any"
