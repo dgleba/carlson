@@ -1,2 +1,10 @@
 rails generate scaffold SearchTest clocknum:string employee:string training_date:date course_name:string id:integer training_record:references --no-migration
 
+----------------------------------------------------------
+How to change the url path?
+
+In routes.rb:
+resources :search_tests  
+...to...
+resources :search_tests, :path => "search_1"
+

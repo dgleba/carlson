@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :search_tests
+  resources :search_tests, :path => "search_1"
   resources :search_tests
   resources :search_tests
   resources :search_tests
