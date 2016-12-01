@@ -1,0 +1,1 @@
+= line_chart TrTrainingEmployee.joins(:tr_training_record).group("MONTH(tr_training_records.training_date)").sum("tr_training_records.hours_trained"), xtitle:'Month', ytitle:'Training Hours in Total', label: "hours"

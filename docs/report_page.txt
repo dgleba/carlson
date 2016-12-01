@@ -1,0 +1,29 @@
+1. In home_controller.rb Add:
+  def generate_report
+  end
+  
+2. In routes.rb Add:
+  get 'generate_report', controller: 'home'
+
+3.In application view:
+Add to navigation bar:
+            %li= link_to 'Generate Reports', generate_report_path(@home)
+            
+4.Create a file:
+generate_report.html.haml under views/home
+
+--------------------------------------------
+Add a page link for graph to report page
+
+1. In home_controller.rb Add:
+  def hours_graph
+  end  
+  
+2. In routes.rb Add:
+  get 'hours_graph', controller: 'home'
+  
+3.In generate_report view:
+= link_to 'Hours Trained Graph', hours_graph_path(@home)
+            
+4.Create a file:
+hours_graph.html.haml under views/home

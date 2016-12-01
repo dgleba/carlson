@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   scope "/admin" do
     resources :users
   end
-
+  get 'generate_report', controller: 'home'
+  get 'hours_graph', controller: 'home'
   # get 'customers/print1'
   # resources :customers do
     # member do

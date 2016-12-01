@@ -10,4 +10,8 @@ class HomeController < ApplicationController
 
   def index
   end
+  def generate_report
+  end
+  def hours_graph
+  end  
 end
