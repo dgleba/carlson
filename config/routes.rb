@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  #Change the path only http://stackoverflow.com/questions/6786725/change-the-url-without-changing-the-resource-name
   resources :search_tests, :path => "search_1"
   resources :search_tests
   resources :search_tests
@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   scope "/admin" do
     resources :users
   end
+  #page for navigation
+  get 'lookup_tables', controller: 'home'  
+  #page for reports and graphs
   get 'generate_report', controller: 'home'
   get 'hours_graph', controller: 'home'
   # get 'customers/print1'

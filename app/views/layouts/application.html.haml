@@ -37,13 +37,7 @@
             %li= link_to 'Training Record', tr_training_records_path
             -if current_user && !current_user.sc_regular?
               %li= link_to 'Trained Employees', tr_training_employees_path
-              %li= link_to 'Staff List', stf_employees_path
-              %li= link_to 'Type', tr_types_path
-              %li= link_to 'Customer', tr_customers_path
-              %li= link_to 'Program', tr_programs_path
-              %li= link_to 'Part', tr_parts_path
-              %li= link_to 'Cell', tr_cells_path
-              %li= link_to 'Asset', stf_assets_path
+              %li= link_to 'Lookup Tables', lookup_tables_path(@home)
               %li= link_to 'Search', search_tests_path
               %li= link_to 'Generate Reports', generate_report_path(@home)              
 

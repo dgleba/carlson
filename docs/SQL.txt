@@ -1,0 +1,35 @@
+#COUNT http://stackoverflow.com/questions/15506512/select-count-across-one-to-many-relationship
+#round number http://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_truncate
+
+Select 
+ `tr_training_records`.`id`,
+ CONCAT_WS(', ', tr_courses.name, tr_courses.number) as course,
+`tr_training_records`.`hours_trained`,
+ COUNT(tr_training_employees.tr_training_record_id) tr_training_employees_count, 
+ IF(`tr_training_records`.`hours_trained`, round((`tr_training_records`.`hours_trained`)*(COUNT(tr_training_employees.tr_training_record_id)), 2), null) AS total_man_hours_trained,
+ `tr_training_records`.`training_date`, `tr_training_records`.`trainer`,
+ `tr_training_records`.`location`, `tr_training_records`.`swi`,
+ `tr_training_records`.`path_to_training_material`,
+ IF(tr_customers.name, CONCAT_WS(', ', tr_customers.name, tr_customers.location), NULL) AS customers,
+ `tr_types`.`name`, `tr_programs`.`name` AS program,
+ IF(tr_training_records.tr_part_id, CONCAT_WS(', ', tr_parts.name, tr_parts.partnumber), NULL) AS part,
+ IF(tr_training_records.tr_cell_id, CONCAT_WS(', ', tr_cells.name, tr_cells.operation), NULL) AS cell,
+ IF(stf_assets.assetnum, CONCAT_WS(', ', stf_assets.assetnum, stf_assets.description), NULL) AS asset
+from tr_training_records
+left join tr_courses
+	on tr_courses.id=tr_training_records.tr_course_id
+left join tr_training_employees
+	on tr_training_employees.tr_training_record_id=tr_training_records.id
+left join tr_customers
+	on tr_customers.id=tr_training_records.tr_customer_id
+left join tr_types
+	on tr_types.id=tr_training_records.tr_type_id
+left join tr_programs
+	on tr_programs.id=tr_training_records.tr_program_id
+left join tr_parts
+	on tr_parts.id=tr_training_records.tr_part_id
+left join tr_cells
+	on tr_cells.id=tr_training_records.tr_cell_id
+left join stf_assets
+	on stf_assets.id=tr_training_records.stf_asset_id
+group by tr_training_records.id

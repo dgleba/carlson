@@ -1,0 +1,24 @@
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2016-12-02[Dec-Fri]15-50PM
+
+
+
+https://github.com/ankane/groupdate
+
+    mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -p mysql
+
+result..    
+    
+    Last login: Fri Dec  2 09:54:14 2016 from 10.5.252.206
+    albe@pmdsdata4:~$     mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -p mysql
+    Enter password:
+    Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
+    Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
+    albe@pmdsdata4:~$
+    
+    
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

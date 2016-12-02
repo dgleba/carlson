@@ -13,5 +13,7 @@ class HomeController < ApplicationController
   def generate_report
   end
   def hours_graph
-  end  
+  end
+  def lookup_tables
+  end
 end
