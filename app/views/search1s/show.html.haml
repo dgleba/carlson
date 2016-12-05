@@ -1,0 +1,20 @@
+%h1= Search1.model_name.human.singularize
+
+%dl.dl-horizontal
+  %dt= Search1.human_attribute_name :clocknum
+  %dd= @search1.clocknum
+  %dt= Search1.human_attribute_name :employee
+  %dd= @search1.employee
+  %dt= Search1.human_attribute_name :training_date
+  %dd= @search1.training_date
+  %dt= Search1.human_attribute_name :course_name
+  %dd= @search1.course_name
+  %dt= Search1.human_attribute_name :id
+  %dd= @search1.id
+  %dt= Search1.human_attribute_name :training_record
+  %dd= @search1.training_record_id
+
+/= link_to t('actions.edit'), edit_search1_path(@search1), class: 'btn /btn-primary'
+&nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp
+= link_to t('actions.back'), search1s_path
+%hr

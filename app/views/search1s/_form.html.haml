@@ -1,4 +1,4 @@
-= simple_form_for(@search_test) do |f|
+= simple_form_for(@search1) do |f|
   = f.error_notification
 
   .form-inputs
@@ -7,10 +7,10 @@
     = f.input :training_date
     = f.input :course_name
     = f.input :id
-    = f.association :training_record
+    = f.association :training_record_id
 
   .form-actions
     = f.button :submit
     &nbsp &nbsp | &nbsp &nbsp
-    = link_to t('actions.back'), search_tests_path
+    = link_to t('actions.back'), search1s_path
   %hr

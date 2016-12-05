@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
+  resources :search1s
   #Change the path only http://stackoverflow.com/questions/6786725/change-the-url-without-changing-the-resource-name
-  resources :search_tests, :path => "search_1"
-  resources :search_tests
-  resources :search_tests
-  resources :search_tests
+
   resources :searches
   resources :tr_training_employees
   resources :tr_training_records
