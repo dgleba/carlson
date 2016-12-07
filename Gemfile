@@ -120,3 +120,4 @@ gem "devise_ldap_authenticatable", :git => "git://github.com/cschiewek/devise_ld
 
 gem 'chartkick'
 gem 'groupdate'
+gem "bourbon"
