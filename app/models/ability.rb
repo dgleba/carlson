@@ -39,6 +39,8 @@ class Ability
       cannot :destroy, [StfEmployee, StfAsset]
       cannot :create, [StfEmployee, StfAsset]
       cannot :update, [StfEmployee, StfAsset]
+      cannot :update, [Search1]
+      cannot :destroy, [Search1]
       #
       #
 
