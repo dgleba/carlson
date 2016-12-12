@@ -11,3 +11,13 @@ gem 'groupdate'
 
 3.In ...views\search_tests\index.html.haml (I think this works in any view), add:
 = line_chart TrTrainingEmployee.joins(:tr_training_record).group("MONTH(tr_training_records.training_date)").sum("tr_training_records.hours_trained"), xtitle:'Month', ytitle:'Training Hours in Total'
+
+Boundary issue:
+
+This sql works:
+SELECT SUM(tr_training_records.hours_trained),  month(tr_training_records.training_date)
+FROM tr_training_employees
+left join tr_training_records ON tr_training_employees.tr_training_record_id = tr_training_records.id
+WHERE DATEDIFF(LAST_DAY(CURDATE()), tr_training_records.training_date) < 366
+Group by MONTH(tr_training_records.training_date)
+;
