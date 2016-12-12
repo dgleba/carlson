@@ -39,7 +39,7 @@ RSpec.describe Search1sController, type: :controller do
   describe "GET #index" do
     it "assigns all search1s as @search1s" do
       search1 = Search1.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, params: {}, session: valid_session
       expect(assigns(:search1s)).to eq([search1])
     end
   end
@@ -47,14 +47,14 @@ RSpec.describe Search1sController, type: :controller do
   describe "GET #show" do
     it "assigns the requested search1 as @search1" do
       search1 = Search1.create! valid_attributes
-      get :show, {:id => search1.to_param}, valid_session
+      get :show, params: {id: search1.to_param}, session: valid_session
       expect(assigns(:search1)).to eq(search1)
     end
   end
 
   describe "GET #new" do
     it "assigns a new search1 as @search1" do
-      get :new, {}, valid_session
+      get :new, params: {}, session: valid_session
       expect(assigns(:search1)).to be_a_new(Search1)
     end
   end
@@ -62,7 +62,7 @@ RSpec.describe Search1sController, type: :controller do
   describe "GET #edit" do
     it "assigns the requested search1 as @search1" do
       search1 = Search1.create! valid_attributes
-      get :edit, {:id => search1.to_param}, valid_session
+      get :edit, params: {id: search1.to_param}, session: valid_session
       expect(assigns(:search1)).to eq(search1)
     end
   end
@@ -71,30 +71,30 @@ RSpec.describe Search1sController, type: :controller do
     context "with valid params" do
       it "creates a new Search1" do
         expect {
-          post :create, {:search1 => valid_attributes}, valid_session
+          post :create, params: {search1: valid_attributes}, session: valid_session
         }.to change(Search1, :count).by(1)
       end
 
       it "assigns a newly created search1 as @search1" do
-        post :create, {:search1 => valid_attributes}, valid_session
+        post :create, params: {search1: valid_attributes}, session: valid_session
         expect(assigns(:search1)).to be_a(Search1)
         expect(assigns(:search1)).to be_persisted
       end
 
       it "redirects to the created search1" do
-        post :create, {:search1 => valid_attributes}, valid_session
+        post :create, params: {search1: valid_attributes}, session: valid_session
         expect(response).to redirect_to(Search1.last)
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved search1 as @search1" do
-        post :create, {:search1 => invalid_attributes}, valid_session
+        post :create, params: {search1: invalid_attributes}, session: valid_session
         expect(assigns(:search1)).to be_a_new(Search1)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:search1 => invalid_attributes}, valid_session
+        post :create, params: {search1: invalid_attributes}, session: valid_session
         expect(response).to render_template("new")
       end
     end
@@ -108,20 +108,20 @@ RSpec.describe Search1sController, type: :controller do
 
       it "updates the requested search1" do
         search1 = Search1.create! valid_attributes
-        put :update, {:id => search1.to_param, :search1 => new_attributes}, valid_session
+        put :update, params: {id: search1.to_param, search1: new_attributes}, session: valid_session
         search1.reload
         skip("Add assertions for updated state")
       end
 
       it "assigns the requested search1 as @search1" do
         search1 = Search1.create! valid_attributes
-        put :update, {:id => search1.to_param, :search1 => valid_attributes}, valid_session
+        put :update, params: {id: search1.to_param, search1: valid_attributes}, session: valid_session
         expect(assigns(:search1)).to eq(search1)
       end
 
       it "redirects to the search1" do
         search1 = Search1.create! valid_attributes
-        put :update, {:id => search1.to_param, :search1 => valid_attributes}, valid_session
+        put :update, params: {id: search1.to_param, search1: valid_attributes}, session: valid_session
         expect(response).to redirect_to(search1)
       end
     end
@@ -129,13 +129,13 @@ RSpec.describe Search1sController, type: :controller do
     context "with invalid params" do
       it "assigns the search1 as @search1" do
         search1 = Search1.create! valid_attributes
-        put :update, {:id => search1.to_param, :search1 => invalid_attributes}, valid_session
+        put :update, params: {id: search1.to_param, search1: invalid_attributes}, session: valid_session
         expect(assigns(:search1)).to eq(search1)
       end
 
       it "re-renders the 'edit' template" do
         search1 = Search1.create! valid_attributes
-        put :update, {:id => search1.to_param, :search1 => invalid_attributes}, valid_session
+        put :update, params: {id: search1.to_param, search1: invalid_attributes}, session: valid_session
         expect(response).to render_template("edit")
       end
     end
@@ -145,13 +145,13 @@ RSpec.describe Search1sController, type: :controller do
     it "destroys the requested search1" do
       search1 = Search1.create! valid_attributes
       expect {
-        delete :destroy, {:id => search1.to_param}, valid_session
+        delete :destroy, params: {id: search1.to_param}, session: valid_session
       }.to change(Search1, :count).by(-1)
     end
 
     it "redirects to the search1s list" do
       search1 = Search1.create! valid_attributes
-      delete :destroy, {:id => search1.to_param}, valid_session
+      delete :destroy, params: {id: search1.to_param}, session: valid_session
       expect(response).to redirect_to(search1s_url)
     end
   end

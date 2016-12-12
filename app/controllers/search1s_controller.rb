@@ -63,6 +63,6 @@ class Search1sController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def search1_params
-    params.require(:search1).permit(:clocknum, :employee, :training_date, :course_name, :id, :training_record_id)
+    params.require(:search1).permit(:clocknum, :employee, :training_date, :course_name, :id, :training_record_id, :dummy)
   end
 end

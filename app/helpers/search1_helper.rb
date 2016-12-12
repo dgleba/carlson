@@ -48,8 +48,7 @@ module Search1Helper
       "updated_at",
       "id",
       "training_record_id",
-      "training_date",
-      "clocknum"
+      "dummy"
     ]
     Search1.columns.select{ |c| c.type == :string || c.type == :text }.map(&:name).each do |column_name|
       most_attributes << column_name unless column_name.in?(attributes_to_exclude)

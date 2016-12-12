@@ -1,3 +1,3 @@
 rails generate scaffold Search1 clocknum:string employee:string training_date:date course_name:string id:integer training_record:references --no-migration
 
-
+rails generate scaffold Search1 clocknum:string employee:string training_date:date course_name:string id:integer training_record:references dummy:string --no-migration
