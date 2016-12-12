@@ -1,3 +1,14 @@
-Preparing...
-%br
-= link_to 'Hours Trained Graph', hours_graph_path(@home)
+.container
+  %br
+  %ul
+    %li{:style => "display:-moz-inline-box; -moz-box-orient:vertical; display:inline-block; vertical-align:top;" }
+      %ul.list-group{:style => "font-size:16px; border-radius: 4px"}
+        %li.list-group-item
+          %strong Generate Reports
+        %a.li.list-group-item{:href => ""} Report ...
+    &nbsp &nbsp &nbsp &nbsp &nbsp 
+    %li{:style => "display:-moz-inline-box; -moz-box-orient:vertical; display:inline-block; vertical-align:top;" }
+      %ul.list-group{:style => "font-size:16px; border-radius: 4px"}
+        %li.list-group-item
+          %strong Graphs     
+        %a.li.list-group-item{:href => hours_graph_path} Hours Trained Graph
