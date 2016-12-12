@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202212200) do
+ActiveRecord::Schema.define(version: 20161212133757) do
 
   create_table "about_incidents_reader", force: :cascade do |t|
     t.text "info", limit: 65535, null: false
@@ -282,13 +282,6 @@ ActiveRecord::Schema.define(version: 20161202212200) do
     t.string   "description", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-  end
-
-  create_table "search", id: false, force: :cascade do |t|
-    t.string "clocknum",      limit: 255
-    t.string "employee",      limit: 255
-    t.date   "training_date"
-    t.string "course_name",   limit: 255
   end
 
   create_table "search_1", id: false, force: :cascade do |t|
