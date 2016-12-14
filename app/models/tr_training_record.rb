@@ -11,9 +11,12 @@ class TrTrainingRecord < ActiveRecord::Base
   has_many :stf_employees, :through => :tr_training_employees, :class_name => 'StfEmployee'
   
   accepts_nested_attributes_for :stf_employees
-  accepts_nested_attributes_for :tr_training_employees,  allow_destroy: true
+  
+  #Don't save record if no employee is chosen http://stackoverflow.com/questions/22471205/how-can-i-validate-the-nested-attributes-field-in-rails-4
+  accepts_nested_attributes_for :tr_training_employees,  allow_destroy: true, reject_if: proc() { | attrs | attrs[ 'stf_employee_id' ] .blank? }
   
   validates :tr_course, :training_date, :presence => true
+  validates :tr_training_employees, presence: { message: "missing employee"}
   default_scope {order('id DESC')}
 
   # use audited for model record history
@@ -25,6 +28,7 @@ class TrTrainingRecord < ActiveRecord::Base
     #"Name:#{self.name} Age:#{self.age} Weight: #{self.weight}"
     "##{id}, on:#{training_date}, course:#{tr_course.name}"
   end
+  
 
 
 end
