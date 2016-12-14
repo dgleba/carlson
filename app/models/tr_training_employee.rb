@@ -6,6 +6,7 @@ class TrTrainingEmployee < ActiveRecord::Base
   before_save :searchm 
   accepts_nested_attributes_for :stf_employee
   
+  default_scope {order('id DESC')}
   # use audited for model record history
   audited
   
