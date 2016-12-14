@@ -13,6 +13,7 @@ class TrTrainingRecord < ActiveRecord::Base
   accepts_nested_attributes_for :stf_employees
   accepts_nested_attributes_for :tr_training_employees,  allow_destroy: true
   
+  validates :tr_course, :training_date, :presence => true
   default_scope {order('id DESC')}
 
   # use audited for model record history

@@ -5,7 +5,8 @@
     .well.well-sm{:style => "background-color:#ffe6ff;"}
       %ul.list-inline
         %li
-          = f.association :tr_course, :as => :collection_select, collection:TrCourse.order(:name, :id).where(active_status: 1), :label_method => lambda { |tr_course| "#{tr_course.name}, #{tr_course.id}" }, label: 'Training Course'
+          %strong <abbr title="required">*</abbr>Training Course<br>
+          = f.association :tr_course, :as => :collection_select, collection:TrCourse.order(:name, :id).where(active_status: 1), :label_method => lambda { |tr_course| "#{tr_course.name}, #{tr_course.id}" }, label: false
         %li
           = f.input :training_date
         %li
@@ -33,7 +34,7 @@
           = f.association :stf_asset, :as => :collection_select, collection:StfAsset.order(:description, :assetnum), :label_method => lambda { |stf_asset| "#{stf_asset.description}, #{stf_asset.assetnum}" }, label:raw('&nbsp &nbsp Asset') 
     /= f.association :user
     
-    %h3 Training employee
+    %h3 <abbr title="required">*</abbr>Training employee
     #tr_training_employees
       = f.simple_fields_for :tr_training_employees do |tr_training_employee|
         = render 'tr_training_employee_fields', f: tr_training_employee, tr_training_employee: f.object

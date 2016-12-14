@@ -6,7 +6,6 @@ class TrTrainingEmployee < ActiveRecord::Base
   before_save :searchm 
   accepts_nested_attributes_for :stf_employee
   
-
   # use audited for model record history
   audited
   
