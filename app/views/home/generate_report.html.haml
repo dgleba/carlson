@@ -6,6 +6,7 @@
         %li.list-group-item
           %strong Generate Reports
         %a.li.list-group-item{:href => generate_report_path(format: :xlsx)} Report using 'axlsx-rails'
+        %a.li.list-group-item{:href => "http://#{request.host}/carlson_reader/index.php?-action=training_records_rpt", :target => "_blank"} Generate a training record report.(Login. Works after that)
     &nbsp &nbsp &nbsp &nbsp &nbsp 
     %li{:style => "display:-moz-inline-box; -moz-box-orient:vertical; display:inline-block; vertical-align:top;" }
       %ul.list-group{:style => "font-size:16px; border-radius: 4px"}

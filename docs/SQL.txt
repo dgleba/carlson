@@ -11,7 +11,7 @@ Select
  `tr_training_records`.`location`, `tr_training_records`.`swi`,
  `tr_training_records`.`path_to_training_material`,
  IF(tr_customers.name, CONCAT_WS(', ', tr_customers.name, tr_customers.location), NULL) AS customers,
- `tr_types`.`name`, `tr_programs`.`name` AS program,
+ `tr_types`.`name` AS type, `tr_programs`.`name` AS program,
  IF(tr_training_records.tr_part_id, CONCAT_WS(', ', tr_parts.name, tr_parts.partnumber), NULL) AS part,
  IF(tr_training_records.tr_cell_id, CONCAT_WS(', ', tr_cells.name, tr_cells.operation), NULL) AS cell,
  IF(stf_assets.assetnum, CONCAT_WS(', ', stf_assets.assetnum, stf_assets.description), NULL) AS asset
