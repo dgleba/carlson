@@ -11,6 +11,13 @@ class HomeController < ApplicationController
   def index
   end
   def generate_report
+    @tr_training_records = TrTrainingRecord.all
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename= "training_records_report.xlsx"'
+      }
+    end
   end
   def hours_graph
   end

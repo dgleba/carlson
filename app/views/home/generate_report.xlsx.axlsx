@@ -1,0 +1,25 @@
+wb = xlsx_package.workbook
+wb.styles do |style|
+  highlight_cell = style.add_style(bg_color: "EFC376", border: Axlsx::STYLE_THIN_BORDER, alignment: { horizontal: :center })
+end
+
+
+wb.add_worksheet(name: "Training Records") do |sheet|
+  sheet.add_row ["id", "Course", "Hours Trained", "Total Man Hours Trained", "Training Date", "Trainer", "Location", "SWI", "Path to Training Material", "Customer", "Type", "Program", "Part", "Cell", "Asset"]
+  @tr_training_records.each do |tr_training_record|
+    sheet.add_row [tr_training_record.id,
+        TrCourse.where(id: tr_training_record.tr_course_id).pluck(:name, :number).first,
+        tr_training_record.hours_trained,
+        TrTrainingEmployee.where(tr_training_record_id: tr_training_record.id).count(:id) * (tr_training_record.hours_trained || 0),
+        tr_training_record.training_date, tr_training_record.trainer,
+        tr_training_record.location, tr_training_record.swi,
+        tr_training_record.path_to_training_material,
+        TrCustomer.where(id: tr_training_record.tr_customer_id).pluck(:name, :location)[0],
+        TrType.where(id: tr_training_record.tr_type_id).pluck(:name).first,
+        TrProgram.where(id: tr_training_record.tr_program_id).pluck(:name).first,
+        TrPart.where(id: tr_training_record.tr_part_id).pluck(:name, :partnumber).first,
+        TrCell.where(id: tr_training_record.tr_cell_id).pluck(:name, :operation).first,
+        StfAsset.where(id: tr_training_record.stf_asset_id).pluck(:assetnum, :description).first
+      ]
+  end
+end    
