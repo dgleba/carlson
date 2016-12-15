@@ -1,6 +1,7 @@
 = simple_form_for(@tr_training_record) do |f|
   = f.error_notification
-
+  = f.error :tr_training_employees
+  
   .form-inputs
     .well.well-sm{:style => "background-color:#ffe6ff;"}
       %ul.list-inline
