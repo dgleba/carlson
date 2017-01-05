@@ -23,6 +23,7 @@ class Ability
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :dashboard                  # allow access to dashboard
 
+
     elsif user.sc_regular?
       # can :read, [ Vehicle, RentalRecord, Passenger]
       # can :create, [ Customer,Vehicle, RentalRecord, Passenger]
@@ -36,9 +37,9 @@ class Ability
      elsif user.sc_supervisor?
       can :manage, :all
       cannot :destroy,  [ TrTrainingRecord, TrTrainingEmployee ]
-      cannot :destroy, [StfEmployee, StfAsset]
-      cannot :create, [StfEmployee, StfAsset]
-      cannot :update, [StfEmployee, StfAsset]
+      cannot :destroy, [StfEmployee, StfAsset, users, roles]
+      cannot :create, [StfEmployee, StfAsset, users, roles]
+      cannot :update, [StfEmployee, StfAsset, users, roles]
       cannot :update, [Search1]
       cannot :destroy, [Search1]
       #

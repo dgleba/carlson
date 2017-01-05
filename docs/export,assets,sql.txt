@@ -1,0 +1,36 @@
+-- Adminer 4.2.2 MySQL dump
+
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+
+DROP TABLE IF EXISTS `stf_assets`;
+CREATE TABLE `stf_assets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `assetnum` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `active_status` int(11) DEFAULT '1',
+  `sort` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_stf_assets_on_assetnum_and_description` (`assetnum`,`description`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `stf_employees`;
+CREATE TABLE `stf_employees` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `clocknum` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `active_status` int(11) DEFAULT '1',
+  `sort` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_stf_employees_on_clocknum_and_name` (`clocknum`,`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+-- 2017-01-03 20:37:35

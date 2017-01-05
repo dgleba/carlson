@@ -1,0 +1,20 @@
+
+2017-01-04 13:02:26.591881700 -0500 ./.env
+2017-01-04 13:26:20.552174400 -0500 ./app/models/ability.rb
+2017-01-04 13:54:54.166590300 -0500 ./app/views/tr_training_records/_tr_training_employee_fields.html.haml
+2017-01-04 15:27:35.147683400 -0500 ./app/views/tr_training_records/_form.html.haml
+2017-01-04 15:29:09.112062400 -0500 ./app/views/tr_training_records/index.html.haml
+
+albe@pmdsdata3:/srv/web/carlson$
+
+
+
+
+2017-01-02 15:50:46.551835900 -0500 ./deploy/deploy.sh
+2017-01-02 16:02:54.174042200 -0500 ./docs/hrdb-carlson-2017-01-02a.sql
+2017-01-03 15:42:11.675369400 -0500 ./docs/New Text Document.txt
+2017-01-04 13:21:11.540007100 -0500 ./app/models/ability.rb
+2017-01-04 13:54:54.166590300 -0500 ./app/views/tr_training_records/_tr_training_employee_fields.html.haml
+2017-01-04 15:28:49.647558300 -0500 ./docs/changes-2017-01-04.txt
+albe@pmdsdata4:/srv/share/carlsona$
+

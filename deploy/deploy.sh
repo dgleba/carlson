@@ -31,15 +31,16 @@ END
 date ; set +vx  ; set -vx ; # echo off, then echo on
 #
 
-prjname="rail263"
+prjname="carlson"
 dpath="/srv/web/$prjname"
-vport="1236"
+vport="1282"
 
 echo $prjname
 echo $dpath
 echo $vport
 
 cd $dpath
+bundle
 
 mkdir -p shared/pids shared/sockets shared/log
 
