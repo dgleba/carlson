@@ -21,7 +21,7 @@
     .well.well-sm{:style => "background-color:#ffddcc;"}  
       %ul.list-inline
         %li
-          = f.association :tr_type, :as => :collection_select, collection:TrType.order(:name), :label_method => lambda { |tr_type| "#{tr_type.name} " }, label:'Type'
+          = f.association :tr_type, :as => :collection_select, collection:TrType.order(:name), :label_method => lambda { |tr_type| "#{tr_type.name} " }, label:'Position'
         %li
           = f.association :tr_customer, :as => :collection_select, collection:TrCustomer.order(:name, :location), :label_method => lambda { |tr_customer| "#{tr_customer.name}, #{tr_customer.location}" }, label:raw('&nbsp &nbsp Customer')
         %li

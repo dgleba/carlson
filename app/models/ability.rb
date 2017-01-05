@@ -37,9 +37,9 @@ class Ability
      elsif user.sc_supervisor?
       can :manage, :all
       cannot :destroy,  [ TrTrainingRecord, TrTrainingEmployee ]
-      cannot :destroy, [StfEmployee, StfAsset, users, roles]
-      cannot :create, [StfEmployee, StfAsset, users, roles]
-      cannot :update, [StfEmployee, StfAsset, users, roles]
+      cannot :destroy, [StfEmployee, StfAsset, User, Role]
+      cannot :create, [StfEmployee, StfAsset, User, Role]
+      cannot :update, [StfEmployee, StfAsset, User, Role]
       cannot :update, [Search1]
       cannot :destroy, [Search1]
       #

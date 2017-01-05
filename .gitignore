@@ -11,7 +11,6 @@
 # http://github.com/RailsApps/rails-composer/issues
 #----------------------------------------------------------------------------
 
-
 # add /config/database.yml if it contains passwords
 /config/database.yml
 /config/secrets.yml
@@ -23,6 +22,7 @@ docprivate/
 /offline/
 db/yamldb/
 db/yamldb_date/
+/db/export
 CI-Lists/
 
 # mac stuff..
