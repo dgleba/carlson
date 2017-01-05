@@ -40,6 +40,7 @@ echo $dpath
 echo $vport
 
 cd $dpath
+
 bundle
 
 mkdir -p shared/pids shared/sockets shared/log
