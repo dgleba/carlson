@@ -32,7 +32,10 @@ development:
   #admin_user: CN=x,DC=stackpole,DC=ca
   #admin_password: x
   ssl: false  
-  allow_unauthenticated_bind: true
+  #
+  # If allow_unauthenticated_bind: false,  then it will allow login with no password / blank password. That is very bad. 2016-12-19
+  # allow_unauthenticated_bind: true
+  #
   # <<: *AUTHORIZATIONS
 
 test:
@@ -56,5 +59,8 @@ production:
   #admin_user: CN=x,DC=stackpole,DC=ca
   #admin_password: x
   ssl: false  
-  allow_unauthenticated_bind: true
+  #
+  # If allow_unauthenticated_bind: false,  then it will allow login with no password / blank password. That is very bad. 2016-12-19
+  # allow_unauthenticated_bind: true
+  #
   # <<: *AUTHORIZATIONS
