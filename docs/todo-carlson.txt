@@ -20,5 +20,13 @@ and introduction:
   - On mobile: best used on Ipad Mini - this is where trained employees are meant to sign on the screen.
 
 
+  
+add link to s:drive and instructions how to right click copy link, paste in location of training materials.
+
+
+add free form title.
+add misc course name and external training course name entries.
+add secondary_course_name - a list that Michelle maintains and tags courses based on title.
+  
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
