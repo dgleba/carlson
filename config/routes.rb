@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tr_secondary_course_names
   resources :search1s
   resources :search1s
   resources :search1s

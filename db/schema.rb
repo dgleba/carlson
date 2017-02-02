@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212133757) do
+ActiveRecord::Schema.define(version: 20170120025225) do
 
   create_table "about_incidents_reader", force: :cascade do |t|
     t.text "info", limit: 65535, null: false
@@ -159,6 +159,22 @@ ActiveRecord::Schema.define(version: 20161212133757) do
     t.integer "version", limit: 4, default: 0, null: false
   end
 
+  create_table "emp_ceridian", id: false, force: :cascade do |t|
+    t.string   "x9",           limit: 14
+    t.string   "eenum",        limit: 7
+    t.string   "name",         limit: 99
+    t.string   "position",     limit: 99
+    t.string   "dept",         limit: 44
+    t.string   "x9b",          limit: 10
+    t.date     "datehired"
+    t.string   "shift",        limit: 14
+    t.date     "senoritydate"
+    t.string   "reportdate",   limit: 39
+    t.integer  "id",           limit: 4,  default: 0, null: false
+    t.datetime "updatedtime",                         null: false
+    t.datetime "createdtime",                         null: false
+  end
+
   create_table "emp_enterprise", id: false, force: :cascade do |t|
     t.string   "clock",       limit: 7
     t.string   "name",        limit: 62
@@ -291,6 +307,7 @@ ActiveRecord::Schema.define(version: 20161212133757) do
     t.string  "course_name",        limit: 255
     t.integer "id",                 limit: 4,   default: 0, null: false
     t.integer "training_record_id", limit: 4
+    t.string  "dummy",              limit: 255
   end
 
   create_table "stf_assets", force: :cascade do |t|
@@ -362,6 +379,14 @@ ActiveRecord::Schema.define(version: 20161212133757) do
   add_index "tr_parts", ["name", "partnumber"], name: "index_tr_parts_on_name_and_partnumber", unique: true, using: :btree
 
   create_table "tr_programs", force: :cascade do |t|
+    t.string   "name",          limit: 255
+    t.integer  "active_status", limit: 4
+    t.integer  "sort",          limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "tr_secondary_course_names", force: :cascade do |t|
     t.string   "name",          limit: 255
     t.integer  "active_status", limit: 4
     t.integer  "sort",          limit: 4

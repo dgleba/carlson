@@ -1,0 +1,14 @@
+%h1= TrSecondaryCourseName.model_name.human.singularize
+
+%dl.dl-horizontal
+  %dt= TrSecondaryCourseName.human_attribute_name :name
+  %dd= @tr_secondary_course_name.name
+  %dt= TrSecondaryCourseName.human_attribute_name :active_status
+  %dd= @tr_secondary_course_name.active_status
+  %dt= TrSecondaryCourseName.human_attribute_name :sort
+  %dd= @tr_secondary_course_name.sort
+
+= link_to t('actions.edit'), edit_tr_secondary_course_name_path(@tr_secondary_course_name), class: 'btn btn-primary'
+&nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp
+= link_to t('actions.back'), tr_secondary_course_names_path
+%hr

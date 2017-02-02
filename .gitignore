@@ -25,6 +25,7 @@ db/yamldb/
 db/yamldb_date/
 /db/export
 CI-Lists/
+ldap.yml
 
 # mac stuff..
 

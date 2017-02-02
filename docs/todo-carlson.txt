@@ -5,13 +5,21 @@ Title:  .
           
 -----------------------2017-01-06[Jan-Fri]11-08AM
 
+cost of training
+
+add free form title.
+add secondary_course_name - a list that Michelle maintains and tags courses based on title.
+
+
 report with next date for re-training by employee by course
+
 
 customer concern  - course
 external training
 indirect report
 training record for one name
-cost of training
+add misc course name and external training course name entries.
+
 add reader link button
 
 
@@ -24,9 +32,6 @@ and introduction:
 add link to s:drive and instructions how to right click copy link, paste in location of training materials.
 
 
-add free form title.
-add misc course name and external training course name entries.
-add secondary_course_name - a list that Michelle maintains and tags courses based on title.
   
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
