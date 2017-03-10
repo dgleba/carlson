@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :tr_parts
   resources :tr_programs
   resources :tr_customers
+  resources :tr_secondary_course_name
   devise_for :users
 
   scope "/admin" do

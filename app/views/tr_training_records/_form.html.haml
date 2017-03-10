@@ -14,10 +14,21 @@
           = f.input :hours_trained
         %li
           = f.input :trainer
-    = f.input :details_of_training
+    
+    .well.well-sm{:style => "background-color:#ffe6ff;"}
+      %ul.list-inline
+        %li
+          = f.input :title, label:raw('<strong>Title:&nbsp;&nbsp;&nbsp;&nbsp;</strong><span style="font-weight:normal;color:grey"><small>If `Training Course` is `misc` or `external`, add a Title here or `Secondary Course Name` from the dropdown.</small></span>')
+        %li
+          = f.association :tr_secondary_course_name, :as => :collection_select, collection:TrSecondaryCourseName.order(:name)
+    
+    = f.input :details_of_training, label:raw('<strong>Details of Training:&nbsp;&nbsp;&nbsp;&nbsp;</strong><span style="font-weight:normal;color:grey"><small>Fill this in only if everything else on this page is not adequate to specify the training.</small></span>')
     = f.input :location
     = f.input :swi, label:'SWI number'
     = f.input :path_to_training_material, label:raw('<strong>Path to training material &nbsp;&nbsp;&nbsp;&nbsp;</strong><span style="font-weight:normal;color:grey"><small>Where are the training materials located?  Eg: S:\HR\Info\Safety Talks\Safety Talks 2016\Hazard Reporting - Janaury.pptx, or Windchill, or etc. If other, please expand.</small></span>')
+    
+    = link_to 'S: drive', '\\\\csd-server\\strat common\\', { target: '_blank' }
+    
     .well.well-sm{:style => "background-color:#ffddcc;"}  
       %ul.list-inline
         %li

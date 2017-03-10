@@ -6,7 +6,11 @@ class TrTrainingRecord < ActiveRecord::Base
   belongs_to :tr_part
   belongs_to :tr_cell
   belongs_to :stf_asset
+  
+  belongs_to :tr_secondary_course_name 
+  
   belongs_to :user
+  
   has_many :tr_training_employees
   has_many :stf_employees, :through => :tr_training_employees, :class_name => 'StfEmployee'
   

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120025225) do
+ActiveRecord::Schema.define(version: 20170310021417) do
 
   create_table "about_incidents_reader", force: :cascade do |t|
     t.text "info", limit: 65535, null: false
@@ -406,24 +406,26 @@ ActiveRecord::Schema.define(version: 20170120025225) do
   add_index "tr_training_employees", ["tr_training_record_id"], name: "index_tr_training_employees_on_tr_training_record_id", using: :btree
 
   create_table "tr_training_records", force: :cascade do |t|
-    t.integer  "tr_course_id",              limit: 4
+    t.integer  "tr_course_id",                limit: 4
     t.date     "training_date"
-    t.text     "details_of_training",       limit: 65535
-    t.float    "hours_trained",             limit: 24
-    t.string   "location",                  limit: 255
-    t.string   "swi",                       limit: 255
-    t.string   "path_to_training_material", limit: 255
-    t.integer  "tr_type_id",                limit: 4
-    t.integer  "tr_customer_id",            limit: 4
-    t.integer  "tr_program_id",             limit: 4
-    t.integer  "tr_part_id",                limit: 4
-    t.integer  "tr_cell_id",                limit: 4
-    t.integer  "stf_asset_id",              limit: 4
-    t.integer  "user_id",                   limit: 4
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.string   "plant",                     limit: 255
-    t.string   "trainer",                   limit: 255
+    t.text     "details_of_training",         limit: 65535
+    t.float    "hours_trained",               limit: 24
+    t.string   "location",                    limit: 255
+    t.string   "swi",                         limit: 255
+    t.string   "path_to_training_material",   limit: 255
+    t.integer  "tr_type_id",                  limit: 4
+    t.integer  "tr_customer_id",              limit: 4
+    t.integer  "tr_program_id",               limit: 4
+    t.integer  "tr_part_id",                  limit: 4
+    t.integer  "tr_cell_id",                  limit: 4
+    t.integer  "stf_asset_id",                limit: 4
+    t.integer  "user_id",                     limit: 4
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.string   "plant",                       limit: 255
+    t.string   "trainer",                     limit: 255
+    t.integer  "tr_secondary_course_name_id", limit: 4
+    t.string   "title",                       limit: 255
   end
 
   add_index "tr_training_records", ["stf_asset_id"], name: "index_tr_training_records_on_stf_asset_id", using: :btree
@@ -432,6 +434,7 @@ ActiveRecord::Schema.define(version: 20170120025225) do
   add_index "tr_training_records", ["tr_customer_id"], name: "index_tr_training_records_on_tr_customer_id", using: :btree
   add_index "tr_training_records", ["tr_part_id"], name: "index_tr_training_records_on_tr_part_id", using: :btree
   add_index "tr_training_records", ["tr_program_id"], name: "index_tr_training_records_on_tr_program_id", using: :btree
+  add_index "tr_training_records", ["tr_secondary_course_name_id"], name: "index_tr_training_records_on_tr_secondary_course_name_id", using: :btree
   add_index "tr_training_records", ["tr_type_id"], name: "index_tr_training_records_on_tr_type_id", using: :btree
   add_index "tr_training_records", ["user_id"], name: "index_tr_training_records_on_user_id", using: :btree
 
@@ -517,6 +520,7 @@ ActiveRecord::Schema.define(version: 20170120025225) do
   add_foreign_key "tr_training_records", "tr_customers"
   add_foreign_key "tr_training_records", "tr_parts"
   add_foreign_key "tr_training_records", "tr_programs"
+  add_foreign_key "tr_training_records", "tr_secondary_course_names"
   add_foreign_key "tr_training_records", "tr_types"
   add_foreign_key "tr_training_records", "users"
   add_foreign_key "users", "roles"
