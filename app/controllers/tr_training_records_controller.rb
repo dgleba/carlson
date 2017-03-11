@@ -24,6 +24,7 @@ class TrTrainingRecordsController < ApplicationController
 
   # GET /tr_training_records/1/edit
   def edit
+
   end
 
   # POST /tr_training_records
@@ -44,7 +45,7 @@ class TrTrainingRecordsController < ApplicationController
   def update
     respond_to do |format|
       if @tr_training_record.update(tr_training_record_params)
-        format.html { redirect_to @tr_training_record, notice: t('success_update') }
+        format.html { redirect_to @tr_training_record, notice: t('success_update')   }
         format.json { render :show, status: :ok, location: @tr_training_record }
       else
         format.html { render :edit }
