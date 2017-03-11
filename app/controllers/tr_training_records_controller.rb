@@ -45,7 +45,8 @@ class TrTrainingRecordsController < ApplicationController
   def update
     respond_to do |format|
       if @tr_training_record.update(tr_training_record_params)
-        format.html { redirect_to @tr_training_record, notice: t('success_update')   }
+        flash[:notice] = 'Successfully updated!'
+        format.html { render :edit, notice: t('success_update')   }
         format.json { render :show, status: :ok, location: @tr_training_record }
       else
         format.html { render :edit }
