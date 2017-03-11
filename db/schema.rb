@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20170310021417) do
     t.datetime "updated_at",                            null: false
   end
 
-  add_index "copy_employees", ["clock", "name"], name: "index_employees_on_clock_and_name", unique: true, using: :btree
+  add_index "copy_employees", ["clock", "name"], name: "index_copyemployees_on_clock_and_name", unique: true, using: :btree
 
   create_table "copy_stf_employees", force: :cascade do |t|
     t.string   "clocknum",      limit: 255

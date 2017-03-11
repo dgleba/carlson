@@ -1,0 +1,31 @@
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2017-03-10[Mar-Fri]18-36PM
+
+-- create_table("emp_enterprise_ceridian", {:id=>false, :force=>:cascade})
+   -> 0.0606s
+-- create_table("employees", {:force=>:cascade})
+   -> 0.0111s
+-- add_index("employees", ["clock", "name"], {:name=>"index_employees_on_clock_and_name", :unique=>true, :using=>:btree})
+rake aborted!
+
+ActiveRecord::StatementInvalid: 
+SQLite3::SQLException: index index_employees_on_clock_and_name already exists: CREATE UNIQUE INDEX "index_employees_on_clock_and_name" ON "employees" ("clock", "name")
+
+/home/albe/share203/carlson/db/schema.rb:224:in `block in <top (required)>'
+/home/albe/share203/carlson/db/schema.rb:14:in `<top (required)>'
+
+SQLite3::SQLException: index index_employees_on_clock_and_name already exists
+
+/home/albe/share203/carlson/db/schema.rb:224:in `block in <top (required)>'
+/home/albe/share203/carlson/db/schema.rb:14:in `<top (required)>'
+Tasks: TOP => db:schema:load
+(See full trace by running task with --trace)
+
+albe@v206x20161030220807:~/share203/carlson$ 
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

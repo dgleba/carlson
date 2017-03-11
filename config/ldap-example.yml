@@ -23,24 +23,19 @@ authorizations: &AUTHORIZATIONS
 
 development:
   #host: stackdns
-  host: 10.4.1.200
-  port: 389
+  host: 1.47.16.2
+  port: 22
   # changed from cn to sAMAccountName 2016-07-27
   attribute: sAMAccountName
-  #base: OU=Users,OU=PMDS Users & Groups,OU=Users-Employee,DC=stackpole,DC=ca
-  base: dc=stackpole,dc=ca
-  #admin_user: CN=x,DC=stackpole,DC=ca
+  base: dc=ole,c=c
   #admin_password: x
   ssl: false  
-  #
-  # If allow_unauthenticated_bind: false,  then it will allow login with no password / blank password. That is very bad. 2016-12-19
-  # allow_unauthenticated_bind: true
   #
   # <<: *AUTHORIZATIONS
 
 test:
   host: localhost
-  port: 3389
+  port: 22
   attribute: cn
   base: ou=people,dc=test,dc=com
   admin_user: cn=admin,dc=test,dc=com
@@ -50,17 +45,12 @@ test:
 
 production:
   #host: stackdns
-  host: 10.4.1.200
-  port: 389
+  host: 1.1.1.1
+  port: 1111
   # changed from cn to sAMAccountName 2016-07-27
   attribute: sAMAccountName
-  #base: OU=Users,OU=PMDS Users & Groups,OU=Users-Employee,DC=stackpole,DC=ca
-  base: dc=stackpole,dc=ca
-  #admin_user: CN=x,DC=stackpole,DC=ca
+  base: dc=ole,dc=ca
   #admin_password: x
   ssl: false  
-  #
-  # If allow_unauthenticated_bind: false,  then it will allow login with no password / blank password. That is very bad. 2016-12-19
-  # allow_unauthenticated_bind: true
   #
   # <<: *AUTHORIZATIONS
