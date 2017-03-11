@@ -1,0 +1,70 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------2015-09-18[Sep-Fri]14-12PM
+
+Title:  . turn off updated_at.
+
+turn off:
+
+ALTER TABLE 
+stf_assets
+  MODIFY COLUMN updated_at TIMESTAMP  NULL;
+
+
+turn it on:
+
+ALTER TABLE 
+stf_assets 
+modify COLUMN updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2015-08-26[Aug-Wed]14-33PM
+add:
+
+ALTER TABLE 
+stf_assets 
+add COLUMN created_at TIMESTAMP;
+
+ALTER TABLE 
+stf_assets 
+add COLUMN updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+
+
+
+DELIMITER |
+CREATE TRIGGER stf_assets_trigger_created BEFORE INSERT ON 
+stf_assets
+FOR EACH ROW BEGIN
+SET new.created_at := now();
+END;
+|
+DELIMITER ;
+
+
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ALTER TABLE 
+stf_assets 
+modify COLUMN updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+DELIMITER |
+CREATE TRIGGER stf_assets_trigger_created BEFORE INSERT ON 
+stf_assets
+FOR EACH ROW BEGIN
+SET new.created_at := now();
+END;
+|
+DELIMITER ;
+
+
+

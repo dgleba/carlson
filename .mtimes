@@ -320,7 +320,6 @@
 1477769371|db/schema.rb
 1477774491|app/models/ability.rb
 1477773827|app/models/role.rb
-1477773860|app/models/user.rb
 1477774097|app/views/customers/index.html.erb
 1477769313|app/models/customer.rb
 1477318423|config/puma-z.rb
@@ -334,3 +333,9 @@
 1477868948|config/routes.rb
 1477868541|db/development.sqlite3
 1477967660|hook.sh
+1489257141|app/models/user.rb
+1489272452|app/views/home/generate_report.html.haml
+1489117005|sql/trigger,createdat,sql,employees.txt
+1489117578|sql/trigger,createdat,sql,inci_assets.txt
+1489117675|sql/trigger,createdat,sql,stf_assets.txt
+1489117312|sql/trigger,createdat,sql,stf_employees.txt

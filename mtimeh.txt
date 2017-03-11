@@ -320,7 +320,6 @@
 2016-10-29 15:29:31 -0400 || 1477769371 || db/schema.rb
 2016-10-29 16:54:51 -0400 || 1477774491 || app/models/ability.rb
 2016-10-29 16:43:47 -0400 || 1477773827 || app/models/role.rb
-2016-10-29 16:44:20 -0400 || 1477773860 || app/models/user.rb
 2016-10-29 16:48:17 -0400 || 1477774097 || app/views/customers/index.html.erb
 2016-10-29 15:28:33 -0400 || 1477769313 || app/models/customer.rb
 2016-10-24 10:13:43 -0400 || 1477318423 || config/puma-z.rb
@@ -334,3 +333,9 @@
 2016-10-30 19:09:08 -0400 || 1477868948 || config/routes.rb
 2016-10-30 19:02:21 -0400 || 1477868541 || db/development.sqlite3
 2016-10-31 22:34:20 -0400 || 1477967660 || hook.sh
+2017-03-11 13:32:21 -0500 || 1489257141 || app/models/user.rb
+2017-03-11 17:47:32 -0500 || 1489272452 || app/views/home/generate_report.html.haml
+2017-03-09 22:36:45 -0500 || 1489117005 || sql/trigger,createdat,sql,employees.txt
+2017-03-09 22:46:18 -0500 || 1489117578 || sql/trigger,createdat,sql,inci_assets.txt
+2017-03-09 22:47:55 -0500 || 1489117675 || sql/trigger,createdat,sql,stf_assets.txt
+2017-03-09 22:41:52 -0500 || 1489117312 || sql/trigger,createdat,sql,stf_employees.txt
