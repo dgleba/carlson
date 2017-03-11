@@ -20,7 +20,7 @@ class TrTrainingRecord < ActiveRecord::Base
   accepts_nested_attributes_for :tr_training_employees,  allow_destroy: true, reject_if: proc() { | attrs | attrs[ 'stf_employee_id' ] .blank? }
   
   validates :tr_course, :training_date, :presence => true
-  validates :tr_training_employees, presence: { message: "missing training employee"}
+  # validates :tr_training_employees, presence: { message: "missing training employee"}
   default_scope {order('id DESC')}
 
   # use audited for model record history
