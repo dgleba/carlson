@@ -12,7 +12,7 @@ u.password='a2a2'
 u.password_confirmation='a2a2'
 u.save!
 
-# u=User.where(:email => 'a').first
-# u.password='a'
-# u.password_confirmation='a'
-# u.save!
+u=User.where(:email => 'reg').first
+u.password='a2a2'
+u.password_confirmation='a2a2'
+u.save!

@@ -23,7 +23,7 @@ r10 = Role.create({name: "sc_seller", description: ""})
   User.create! email: 'a@e', name: 'admin' , password: 'a2a2', password_confirmation: 'a2a2', role_id: r1.id
   # User.create! email: 'a', name: 'admin' , password: 'a2', password_confirmation: 'a2', role_id: r1.id
 #
-    u1 = User.create({name: "reg", email: "reg", password: "arar", password_confirmation: "arar", role_id: r5.id})
+    u1 = User.create({name: "r@eg", email: "reg", password: "a2a2", password_confirmation: "a2a2", role_id: r5.id})
    # u2 = User.create({name: "miniml", email: "m", password: "a", password_confirmation: "a", role_id: r2.id})
 #   u3 = User.create({name: "sKev", email: "k@e", password: "a", password_confirmation: "a", role_id: r2.id})
 #   u4 = User.create({name: "admin", email: "a", password: "a", password_confirmation: "a", role_id: r3.id})
