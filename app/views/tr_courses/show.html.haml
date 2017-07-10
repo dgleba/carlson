@@ -3,10 +3,16 @@
 %dl.dl-horizontal
   %dt= TrCourse.human_attribute_name :name
   %dd= @tr_course.name
+  %dt= TrCourse.human_attribute_name :number
+  %dd= @tr_course.number
   %dt= TrCourse.human_attribute_name :category
   %dd= @tr_course.category
   %dt= TrCourse.human_attribute_name :description
   %dd= @tr_course.description
+  %dt= TrCourse.human_attribute_name :active_status
+  %dd= @tr_course.active_status
+  %dt= TrCourse.human_attribute_name :sort
+  %dd= @tr_course.sort
 
 = link_to t('actions.edit'), edit_tr_course_path(@tr_course), class: 'btn btn-primary'
 &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp

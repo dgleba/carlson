@@ -30,8 +30,11 @@
       %th
       %th
       %th= sort_link(@q, :name, TrCourse.human_attribute_name(:name))
+      %th= sort_link(@q, :number, TrCourse.human_attribute_name(:number))
       %th= sort_link(@q, :category, TrCourse.human_attribute_name(:category))
       %th= sort_link(@q, :description, TrCourse.human_attribute_name(:description))
+      %th= sort_link(@q, :active_status, TrCourse.human_attribute_name(:active_status))
+      %th= sort_link(@q, :sort, TrCourse.human_attribute_name(:sort))
 
   %tbody
     - @tr_courses.each do |tr_course|
@@ -39,7 +42,10 @@
         %td= link_to t('actions.show'), tr_course, class: 'btn btn-primary'
         %td= link_to t('actions.edit'), edit_tr_course_path(tr_course)
         %td= tr_course.name
+        %td= tr_course.number
         %td= tr_course.category
         %td= tr_course.description
+        %td= tr_course.active_status
+        %td= tr_course.sort
 
 = paginate @tr_courses
