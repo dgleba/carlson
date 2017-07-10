@@ -11,7 +11,8 @@ class TrTrainingRecord < ActiveRecord::Base
   
   belongs_to :user
   
-  has_many :tr_training_employees
+  has_many :tr_training_employees , dependent: :destroy
+
   has_many :stf_employees, :through => :tr_training_employees, :class_name => 'StfEmployee'
   
   accepts_nested_attributes_for :stf_employees

@@ -17,10 +17,10 @@
   = link_to t('actions.back'), tr_training_employees_path
   %hr
 
+
   %br
-  %br
-  /%dt= TrTrainingEmployee.human_attribute_name :output
-  /%dd= @tr_training_employee.output.truncate(100).present?
+  %dt= TrTrainingEmployee.human_attribute_name :output
+  %dd= @tr_training_employee.output.truncate(100).present?
 
   :javascript
     $(document).ready(function() {

@@ -59,6 +59,7 @@
     %tr
       %th
       %th
+      %th
       %th= sort_link(@q, :tr_course, TrTrainingRecord.human_attribute_name(:tr_course))
       %th= sort_link(@q, :training_date, TrTrainingRecord.human_attribute_name(:training_date))
       %th= sort_link(@q, :details_of_training, TrTrainingRecord.human_attribute_name(:details_of_training))
@@ -81,6 +82,13 @@
       %tr
         %td= link_to t('actions.show'), tr_training_record, class: 'btn btn-primary'
         %td= link_to t('actions.edit'), edit_tr_training_record_path(tr_training_record)
+        
+        - if current_user.sc_admin?
+          %td= link_to t('actions.delete'), tr_training_record, method: :delete, data: { confirm: t('actions.delete_question') }
+        - else
+          %td
+            %span &nbsp
+        
         %td= tr_training_record.tr_course
         %td= tr_training_record.training_date
         %td= tr_training_record.details_of_training

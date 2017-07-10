@@ -72,7 +72,30 @@
         %td= tr_training_employee.tr_training_record
         %td= tr_training_employee.stf_employee 
         %td= tr_training_employee.id
+        %td= tr_training_employee.output.truncate(100).present?
+        %td= tr_training_employee.output.truncate(20) if tr_training_employee.output.present?
+/        %td   
+/          .sigPad.signed
+/            .sigWrapper
+/              .typed
+/              %canvas.pad{:height => "111", :width => "311"}    
+/
+/:javascript
+/  $(document).ready(function() {
+/    //   
+/    var sig = #{@tr_training_employee.output if tr_training_employee.output.present?};
+/    $('.sigPad').signaturePad({displayOnly : true}).regenerate(sig);
+/    });
+
+
 = paginate @tr_training_employees
+
+/  
+/
+/
+/
+/
+/
 
 %hr
 
@@ -84,7 +107,7 @@
 
 :javascript
   $(function() {
-
+  
   $('#viewless').hide();
   $('#viewmore').click(function(){
       var el = $('#resize01'),
@@ -111,3 +134,4 @@
       $('#viewless').click();
   }
   });
+
