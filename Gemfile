@@ -15,7 +15,6 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'sqlite3'
 gem "select2-rails"
 gem 'simple_form'
 gem 'turbolinks'
