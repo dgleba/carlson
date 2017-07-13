@@ -4,6 +4,8 @@ class CreateTrCourses < ActiveRecord::Migration
       t.string :name
       t.string :category
       t.string :description
+      t.integer :active_status, :default => 1
+      t.integer :sort, :default => 51
 
       t.timestamps null: false
     end

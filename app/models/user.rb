@@ -1,10 +1,23 @@
 class User < ActiveRecord::Base
+
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  
-  devise :ldap_authenticatable, :registerable,
-  #devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  # :confirmable, :lockable,  and :omniauthable , :timeoutable
+  #devise :database_authenticatable,
+  #     :trackable
+         #:validatable, :recoverable, :registerable, :rememberable,
+
+  # if running on pmds then use ldap_authenticatable
+  #
+  if `hostname`.strip =~ /pmdsdata3/i then
+  #     puts 'v2'
+    # Include default devise modules. Others available are:
+    # :confirmable,  and :omniauthable , :timeoutable, :validatable, :rememberable, :registerable,
+    devise :ldap_authenticatable, 
+      :registerable, :trackable,  :recoverable, :lockable
+  elsif
+    devise :database_authenticatable,
+      :trackable, :registerable, :trackable,  :recoverable, :lockable
+  end
 
   # use audited for model record history
   audited

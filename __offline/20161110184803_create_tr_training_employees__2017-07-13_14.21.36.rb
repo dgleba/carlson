@@ -1,5 +1,12 @@
 class CreateTrTrainingEmployees < ActiveRecord::Migration
   def change
+  
+    ActiveRecord::Base.connection.execute(
+        <<-SQL
+          -- SET foreign_key_checks = 0;
+        SQL
+      )
+   
  
     create_table :tr_training_employees do |t|
       t.string :name
@@ -10,6 +17,13 @@ class CreateTrTrainingEmployees < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+  
+    ActiveRecord::Base.connection.execute( 
+        <<-SQL
+          -- SET foreign_key_checks = 1;
+        SQL
+      )
+   
     
   end
 end

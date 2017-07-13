@@ -7,8 +7,9 @@ class ViewCreateSearch < ActiveRecord::Migration
 
   ActiveRecord::Base.connection.execute <<-SQL
     
-CREATE OR REPLACE
-     VIEW search_test
+  -- CREATE OR REPLACE
+  CREATE 
+     VIEW search_1
      AS 
      Select  
         se.clocknum AS clocknum,se.name AS employee, rc.training_date AS training_date, (Select tr_courses.name from tr_courses where tr_courses.id = rc.tr_course_id) AS course_name, te.id AS id, te.tr_training_record_id AS training_record_id
