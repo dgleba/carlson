@@ -2,7 +2,11 @@ source 'https://rubygems.org'
 
 #ruby '2.3.0'
 gem 'rails', '4.2.7.1'
-gem 'mysql2'
+
+  gem 'sqlite3', group: :development
+  gem 'mysql2', group: :development
+  gem 'pg', group: :production
+
 #gem 'sass-rails', '~> 5.0.3'
 gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 gem 'uglifier', '>= 1.3.0'
