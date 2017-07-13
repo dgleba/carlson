@@ -3,7 +3,7 @@ class CreateTrTrainingEmployees < ActiveRecord::Migration
   
     ActiveRecord::Base.connection.execute(
         <<-SQL
-          SET foreign_key_checks = 0;
+          -- SET foreign_key_checks = 0;
         SQL
       )
    
@@ -20,7 +20,7 @@ class CreateTrTrainingEmployees < ActiveRecord::Migration
   
     ActiveRecord::Base.connection.execute( 
         <<-SQL
-          SET foreign_key_checks = 1;
+          -- SET foreign_key_checks = 1;
         SQL
       )
    
