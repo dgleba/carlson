@@ -52,8 +52,10 @@ gem 'ransack'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
+gem 'puma' # lets use puma instead of webrick for development
+
 group :prodution do
-  gem 'puma'
+#  gem 'puma'
 end
 
 group :development, :test do
@@ -66,7 +68,6 @@ group :development, :test do
 #  gem 'capistrano-rails-console'
 #  gem 'airbrussh', require: false
 
-  gem 'puma' # lets use puma instead of webrick for development
 #  gem 'foreman'
   gem 'spring'
   gem 'byebug'
