@@ -291,6 +291,9 @@ GEM
       railties (~> 4.0)
     rails-observers (0.1.2)
       activemodel (~> 4.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
     rails_admin (1.1.0)
       builder (~> 3.1)
       coffee-rails (~> 4.0)
@@ -304,6 +307,8 @@ GEM
       rails (>= 4.0, < 6)
       remotipart (~> 1.3)
       sass-rails (>= 4.0, < 6)
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (4.2.7.1)
       actionpack (= 4.2.7.1)
       activesupport (= 4.2.7.1)
@@ -469,6 +474,7 @@ DEPENDENCIES
   rails (= 4.2.7.1)
   rails-erd
   rails-i18n (>= 4.0.0)
+  rails_12factor
   rails_admin
   ransack
   recipient_interceptor

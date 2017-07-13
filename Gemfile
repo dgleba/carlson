@@ -131,3 +131,4 @@ gem 'axlsx', '2.1.0.pre'
 gem 'axlsx_rails'
 #
 gem "figaro"
+gem 'rails_12factor', group: :production
