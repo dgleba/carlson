@@ -31,8 +31,32 @@
   %dd= @tr_training_record.stf_asset
   %dt= 'Creator'
   %dd= @tr_training_record.user
+ 
 
+%table.table.table-striped
+  %thead
+    %tr
+      %th Employee
+      %th TrainingEmployeeID
+  %tbody
+    - @tr_training_record.tr_training_employees.each do |tr_training_employee|
+      %tr
+        %td= tr_training_employee.stf_employee 
+        %td= tr_training_employee.id
+        %td= tr_training_employee.output.present?
+        %td= tr_training_employee.output.truncate(20) if tr_training_employee.output.present?
 
+/ works..
+/%table.table.table-striped
+/  %thead
+/    %tr
+/      %th SignatureCode
+/  %tbody
+/    - @tr_training_record.tr_training_employees.each do |p|
+/      %tr
+/        %td= p.try(:output).truncate(29)
+
+        
 = link_to t('actions.edit'), edit_tr_training_record_path(@tr_training_record), class: 'btn btn-primary'
 &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp
 = link_to t('actions.back'), tr_training_records_path
