@@ -140,3 +140,6 @@ pickle-email-*.html
 /nbproject/private/
 
 /.project
+
+# Ignore application configuration
+/config/application.yml
